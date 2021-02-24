@@ -1,125 +1,90 @@
 const help = (prefix) => {
-	return `
+	return `𝕾𝖊𝖏𝖆𝖒 𝕭𝖊𝖒-𝖁𝖎𝖓𝖉𝖔𝖘 𝖆𝖔 𝕸𝖊𝖓𝖚 𝖉𝖔
+💎 ▁▂▃༻XHIT ISRAEL BOT 1.0༺▃▂▁ 💎
 
-╔════════════════════
-║   🌹 XHIT DE ISRAEL 🌹
-╠════════════════════
- By: PABLINNN OS MAIS BRABO DAS EDIT FODASE
-
-
-➸ Prefix:  *「${prefix} 」*
-➸ Status: *「 Online 」*
-
-       • ──── ✾ ──── •
-       *FIGURINHAS*【✔】
-       • ──── ✾ ──── •
-      
-➸ Comando : *${prefix}sticker* ou *${prefix}stiker*
-➸ útil em : converter imagem/gif/vídeo em adesivo
-➸ uso : responder imagem/gif/video ou enviar imagem/gif/video com legenda\n
-➸ Comando : *${prefix}sticker nobg* ou *${prefix}stiker nobg*
-➸ útil em : converter imagem em adesivo removendo o fundo
-➸ uso : responder imagem ou enviar imagem com legenda/n
-➸ Comando : *${prefix}toimg*
-➸ útil em : converter adesivo em imagem
-➸ uso : adesivo de resposta\n
-➸ Comando : *${prefix}tsticker* ou *${prefix}tstiker*
-➸ útil em : converter texto em adesivo
-➸ uso : *${prefix}tsticker seu texto aqui*\n
-
-       • ─── ✾ ─── •
-       *MEMES*【✔】
-       • ─── ✾ ─── •
-      
-➸ Comando : *${prefix}meme*
-➸ útil em : mandar imagens aleatórias de meme [inglês]
-➸ uso : basta emviar o comando\n
-➸ Comando : *${prefix}memeindo*
-➸ útil em : mandar imagens aleatórias de meme [indo]
-➸ uso : basta enviar o comando
-
-       • ──── ✾ ──── •
-       *OUTROS...*【✔】
-       • ──── ✾ ──── •
-      
-➸ Comando : *${prefix}gtts*
-➸ útil em : converter texto em fala/áudio
-➸ uso : *${prefix}gtts [cc] [text]*\nexemplo : *${prefix}gtts ja On2-chan*\n
-➸ Comando : *${prefix}loli*
-➸ útil em : mandar imagens aleatórias de loli
-➸ uso : basta enviar o comando\n
-➸ Comando : *${prefix}nsfwloli*
-➸ útil em : mandar imagens aleatórias de nsfw loli
-➸ uso : basta enviar o comando\n
-➸ Comando : *${prefix}url2img*
-➸ útil em : tirar screenshots da web
-➸ uso : *${prefix}url2img [tipe] [url]*\n
-➸ Comando : *${prefix}simi*
-➸ útil em : responder sua mensagem por simi
-➸ uso : *${prefix}simi sua mensagem*\n
-➸ Comando : *${prefix}ocr*
-➸ útil em : pegar o texto da foto e lhe enviar
-➸ uso : responder imagem ou enviar mensagem com legenda\n
-➸ Comando : *${prefix}wait*
-➸ útil em : pesquisar sobre o anime por imagem [ Que anime é este/que ]
-➸ uso : responder imagem ou enviar imagem com legenda\n
-➸ Comando : *${prefix}setprefix*
-➸ útil em : alterar o prefixo do bot
-➸ uso : *${prefix}setprefix [texto|opcional]*\nexemplo : *${prefix}setprefix ?*
-➸ Nota : Usado somente pelo proprietário do bot\n
-
-       • ─── ✾ ─── •
-       *GRUPO*【✔】
-       • ─── ✾ ─── •
-      
-➸ Comando : *${prefix}linkgroup*
-➸ útil em : enviar o link do grupo
-➸ uso : basta enviar o comando\n
-➸ Comando : *${prefix}marcar*
-➸ útil em : marcar todos os membros do grupo, incluindo administradores
-➸ uso : basta enviar o comando\n
-➸ Nota : Você precisa ser administrador do grupo\n
-➸ Comando : *${prefix}simih*
-➸ útil em : ativar o modo simi no grupo
-➸ uso : *${prefix}simih 1* para ativar o modo simi e *${prefix}simih 0* para 
-➸ desativar o modo simih
-➸ Nota : Você precisa ser administrador do grupo\n
-➸ Comando : *${prefix}add*
-➸ útil em : adicionar membro ao grupo
-➸ uso : *${prefix}add 5585xxxxx*\n
-➸ Nota : o bot precisa ser admin!\n
-➸ Comando : *${prefix}kick*
-➸ útil em : remover membros do grupo
-➸ uso : *${prefix}kick e o @da pessoa*\n
-➸ Nota : Você precisa ser admin e o bot também
-➸ Comando : *${prefix}promote*
-➸ útil em : tornar membro do grupo um administrador
-➸ uso : *${prefix}promote e o @da pessoa*\n
-➸ Nota : Você precisa ser admin e o bot também
-➸ Comando : *${prefix}demote*
-➸ útil em : tornar o administrador um membro comum
-➸ uso : *${prefix}demote e o @da pessoa*\n
-➸ Nota : Você precisa ser admin e o bot também
-
-       • ────── ✾ ────── •
-       *H*【✔】
-       • ────── ✾ ────── •              
-
-➸ *${prefix}help1* ♔
-    
-
-╔════════════════════
-  FEITO POR **
-  DUVIDAS? 👇
-  WA
+╔════ ❯ 𝓡𝓮𝓭𝓮𝓼 𝓼𝓸𝓬𝓲𝓪𝓲𝓼 ❮ ══════════
+║ ❯ insta: @xit_de_israel
+║ ❯ Grupo: https://chat.whatsapp.com/H7cHfiVN62e1xzR3ZtdEwg
+║
+║ !ᴏʙꜱ ᴄᴀꜱᴏ ᴇꜱꜱᴇ ɴᴜᴍᴇʀᴏ ꜱᴇᴊᴀ ʙᴀɴɪᴅᴏ 
+║ ᴠᴇᴊᴀ ᴀꜱ ʀᴇᴅᴇꜱ ꜱᴏᴄɪᴀɪꜱ ᴅᴏ ʙᴏᴛ ᴘᴀʀᴀ 
+║ ᴠᴇʀ ᴏ ɴᴏᴠᴏ ɴᴜᴍᴇʀᴏ!
+╠═════ ❯ 𝓬𝓶𝓭 𝓹𝓻𝓲𝓷𝓬𝓲𝓹𝓪𝓲𝓼 ❮ ══════
+║ ❯ *${prefix}sticker ou stiker*
+║ ❯ *${prefix}sticker nobg*
+║ ❯ *${prefix}toimg*
+║ ❯ *${prefix}tsticker*
+║ ❯ *${prefix}gtts*
+║ ❯ *${prefix}loli*
+║ ❯ *${prefix}
+║ ❯ *${prefix}
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓸𝓻𝓼𝓮 (OFF)❮ ════════
+║ ❯ *${p}txtomorse* <text>
+║ ❯ *${p}morsetotxt* <text>
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓮𝓿𝓲𝓼𝓪𝓸(OFF) ❮ ════════
+║ ❯ *${p}ship* <num1> <num2>
+║ ❯ *${p}corno* <num1>
+║ ❯ *${p}randomship* <num1 or nothin>
+║ ❯ *${p}gado* <num1>
+║ ❯ *${p}gay* <num1>
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓺𝓻𝓬𝓸𝓭𝓮 (off)❮ ════════
+║ ❯ *${p}qrcode* <text>
+║ ❯ *${p}qrcodegb* <text>
+║ ❯ *${p}qrcodebb* <text>
+║ ❯ *${p}qrcoderb* <text>
+║ ❯ *${p}qrcodebg* <text>
+║ ❯ *${p}qrcodebb1* <text>
+║ ❯ *${p}qrcodebr* <text>
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓽𝓮𝔁𝓽𝓸 (off)❮ ═════════
+║ ❯ *${p}textcomands*
+║ ❯ *${p}repeat* <text>
+║ ❯ *${p}ocr* <caption, reply sticker>
+║ ❯ *${p}tiktokstalk* <tik tok name>
+║ ❯ *${p}nethunter*
+║ ❯ *${p}signome* <name>
+║ ❯ *${p}idioma*
+║ ❯ *${p}frase*
+║ ❯ *${p}destrava*
+║ ❯ *${p}wppim*
+║ ❯ *${p}db*
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓮𝓶𝓮 ❮ ════════
+║ ❯ *${p}meme*
+║ ❯ *${p}memeindo*
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓪𝓾𝓭𝓲𝓸 ❮ ════════
+║ ❯ *${p}gtts* <la> <text>
+║ ❯ *${p}playlist*
+║ ❯ *${p}ytmp3* <link youtube>
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓪𝓷𝓲𝓶𝓮 (OFF)❮ ═══════
+║ ❯ *${p}randomanime*
+║ ❯ *${p}randomshota*
+║ ❯ *${p}randomkiss*
+║ ❯ *${p}randomhug*
+║ ❯ *${p}nekoanime*
+║ ❯ *${p}wait* <caption, reply image>
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓸𝓻𝓷𝓸 ❮ ════════
+║ ❯ *${prefix}hentai
+║ ❯ *${prefix}porno
+║ ❯ *${prefix}mia
+║ ❯ *${prefix}mia1
+║ ❯ *${prefix}mia2
+║ ❯ *${prefix}belle
+║ ❯ *${prefix}belle1
+║ ❯ *${prefix}belle2
+║ ❯ *${prefix}belle3
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓰𝓻𝓾𝓹𝓸 ❮ ════════
+║ ❯ *${prefix}linkgroup*
+║ ❯ *${prefix}marcar* (Somente adms do grupo podem usar)
+║ ❯ *${prefix}simih* (Somente adms do podem usar
+║ ❯ *${prefix}add* 
+║ ❯ *${prefix}kick*
+║ ❯ *${prefix}promote*
+║ ❯ *${prefix}demote*
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓸𝓹𝓲𝓮𝓽𝓪𝓻𝓲𝓸 ❮ ═══
+║ ❯ *${prefix}*setprefix
+║ ❯ *${p}unblock* <text>*
 ╚════════════════════`
 }
 
 exports.help = help
-
-
-
-
-
 
 
