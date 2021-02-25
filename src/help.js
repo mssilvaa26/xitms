@@ -14,53 +14,53 @@ const help = (prefix) => {
 ║ ❯ *${prefix}sticker nobg*
 ║ ❯ *${prefix}toimg*
 ║ ❯ *${prefix}tsticker*
-║ ❯ *${prefix}gtts*
-║ ❯ *${prefix}loli*
+║ ❯ *${prefix}tts*
+║ ❯ *${prefix}lolih*
 ║ ❯ *${prefix}
 ║ ❯ *${prefix}
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓸𝓻𝓼𝓮 (OFF)❮ ════════
-║ ❯ *${p}txtomorse* <text>
-║ ❯ *${p}morsetotxt* <text>
+║ ❯ *${prefix}txtomorse* <text>
+║ ❯ *${prefix}morsetotxt* <text>
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓮𝓿𝓲𝓼𝓪𝓸(OFF) ❮ ════════
-║ ❯ *${p}ship* <num1> <num2>
-║ ❯ *${p}corno* <num1>
-║ ❯ *${p}randomship* <num1 or nothin>
-║ ❯ *${p}gado* <num1>
-║ ❯ *${p}gay* <num1>
+║ ❯ *${prefix}ship* <num1> <num2>
+║ ❯ *${prefix}corno* <num1>
+║ ❯ *${prefix}randomship* <num1 or nothin>
+║ ❯ *${prefix}gado* <num1>
+║ ❯ *${prefix}gay* <num1>
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓺𝓻𝓬𝓸𝓭𝓮 (off)❮ ════════
-║ ❯ *${p}qrcode* <text>
-║ ❯ *${p}qrcodegb* <text>
-║ ❯ *${p}qrcodebb* <text>
-║ ❯ *${p}qrcoderb* <text>
-║ ❯ *${p}qrcodebg* <text>
-║ ❯ *${p}qrcodebb1* <text>
-║ ❯ *${p}qrcodebr* <text>
+║ ❯ *${prefix}qrcode* <text>
+║ ❯ *${prefix}qrcodegb* <text>
+║ ❯ *${prefix}qrcodebb* <text>
+║ ❯ *${prefix}qrcoderb* <text>
+║ ❯ *${prefix}qrcodebg* <text>
+║ ❯ *${prefix}qrcodebb1* <text>
+║ ❯ *${prefix}qrcodebr* <text>
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓽𝓮𝔁𝓽𝓸 (off)❮ ═════════
-║ ❯ *${p}textcomands*
-║ ❯ *${p}repeat* <text>
-║ ❯ *${p}ocr* <caption, reply sticker>
-║ ❯ *${p}tiktokstalk* <tik tok name>
-║ ❯ *${p}nethunter*
-║ ❯ *${p}signome* <name>
-║ ❯ *${p}idioma*
-║ ❯ *${p}frase*
-║ ❯ *${p}destrava*
-║ ❯ *${p}wppim*
-║ ❯ *${p}db*
+║ ❯ *${prefix}textcomands*
+║ ❯ *${prefix}repeat* <text>
+║ ❯ *${prefix}ocr* <caption, reply sticker>
+║ ❯ *${prefix}tiktokstalk* <tik tok name>
+║ ❯ *${prefix}nethunter*
+║ ❯ *${prefix}signome* <name>
+║ ❯ *${prefix}idioma*
+║ ❯ *${prefix}frase*
+║ ❯ *${prefix}destrava*
+║ ❯ *${prefix}wppim*
+║ ❯ *${prefix}db*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓮𝓶𝓮 ❮ ════════
-║ ❯ *${p}meme*
-║ ❯ *${p}memeindo*
+║ ❯ *${prefix}meme*
+║ ❯ *${prefix}memeindo*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓪𝓾𝓭𝓲𝓸 ❮ ════════
-║ ❯ *${p}gtts* <la> <text>
-║ ❯ *${p}playlist*
-║ ❯ *${p}ytmp3* <link youtube>
+║ ❯ *${prefix}gtts* <la> <text>
+║ ❯ *${prefix}playlist*
+║ ❯ *${prefix}ytmp3* <link youtube>
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓪𝓷𝓲𝓶𝓮 (OFF)❮ ═══════
-║ ❯ *${p}randomanime*
-║ ❯ *${p}randomshota*
-║ ❯ *${p}randomkiss*
-║ ❯ *${p}randomhug*
-║ ❯ *${p}nekoanime*
-║ ❯ *${p}wait* <caption, reply image>
+║ ❯ *${prefix}randomanime*
+║ ❯ *${prefix}randomshota*
+║ ❯ *${prefix}randomkiss*
+║ ❯ *${prefix}randomhug*
+║ ❯ *${prefix}nekoanime*
+║ ❯ *${prefix}wait* <caption, reply image>
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓸𝓻𝓷𝓸 ❮ ════════
 ║ ❯ *${prefix}hentai
 ║ ❯ *${prefix}porno
@@ -80,8 +80,7 @@ const help = (prefix) => {
 ║ ❯ *${prefix}promote*
 ║ ❯ *${prefix}demote*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓸𝓹𝓲𝓮𝓽𝓪𝓻𝓲𝓸 ❮ ═══
-║ ❯ *${prefix}*setprefix
-║ ❯ *${p}unblock* <text>*
+║ ❯ *${prefix}*setprefix*
 ╚════════════════════`
 }
 

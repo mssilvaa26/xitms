@@ -384,11 +384,6 @@ async function starts() {
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnFAocqaur5ZX1DPN6ZGP8PJy2cNppas_gYA&usqp=CAU`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
 					break
-				case 'loli':
-					memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://i.imgur.com/iphQUGi.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'hmm safado, então quer ver loli?'})
-					break
 				case 'hentai':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://i.imgur.com/8U9GwX4.jpg`)
