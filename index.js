@@ -306,10 +306,13 @@ async function starts() {
 						reply(`Envie fotos com legendas ${prefix}sticker ou tags de imagem que já foram enviadas`)
 					}
 					break
+					case 'qrcode':
+                buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?data=${body.slice(8)}&size=1080%C3%971080`)
+				client.sendMessage(from, buff, image, {quoted: mek})
+				break
 				case 'tts':
 				   client.updatePresence(from, Presence.recording) 
 				   if (args.length < 1) return client.sendMessage(from, 'Qual é o código da linguagem?', text, {quoted: mek})
-                                   if (!isUser) return reply(mess.only.daftarB)
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Cadê o texto', text, {quoted: mek})
 					dtt = body.slice(8)
@@ -486,10 +489,10 @@ async function starts() {
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
 					reply(anu.result)
 					break
-				case 'yt2mp3':
-					if (args.length < 1) return reply('Cadê o url, hum?')
+				case 'ytmp3':
+					if (args.length < 1) return reply('KD O LINK CARAI?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
-					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/yta?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
+     					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/yta?url=${args[0]}&apiKey=BotWeA`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
 					teks = `*Title* : ${anu.title}\n*Filesize* : ${anu.filesize}`
 					thumb = await getBuffer(anu.thumb)
@@ -738,6 +741,15 @@ async function starts() {
 					anu = await simih(teks) //fetchJson(`https://mhankbarbars.herokuapp.com/api/samisami?text=${teks}`, {method: 'get'})
 					//if (anu.error) return reply('Simi ga tau kak')
 					reply(anu)
+					break
+				case 'ytmp4':
+				if (args.lngth < 1) return reply('KD O LINK PORRA?')
+					tels = body.slice(7)				
+					reply(mess.wait)
+					buffer = await getBuffer(anu.thumb)
+				 	anu = await fetchJson(`https://tobz-api.herokuapp.com/api/ytv?url=${tels}&apikey=BotWeA`, {method: 'get'})
+					hasil = `*â Judul* : ${anu.title}\n*â Filesize* : ${anu.filesize}\n*â resolution* : ${anu.resolution}\n*â Tipe* : ${anu.ext}\n*â Link* : ${anu.result}`					
+					client.sendMessage(from, buffer, image,  {quoted: mek, caption: hasil})
 					break
 				case 'simih':
 					if (!isGroup) return reply(mess.only.group)

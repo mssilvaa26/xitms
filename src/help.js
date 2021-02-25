@@ -4,7 +4,8 @@ const help = (prefix) => {
 
 ╔════ ❯ 𝓡𝓮𝓭𝓮𝓼 𝓼𝓸𝓬𝓲𝓪𝓲𝓼 ❮ ══════════
 ║ ❯ insta: @xit_de_israel
-║ ❯ Grupo: https://chat.whatsapp.com/H7cHfiVN62e1xzR3ZtdEwg
+║ ❯ Grupo: https://chat.whatsapp.com/
+║H7cHfiVN62e1xzR3ZtdEwg
 ║
 ║ !ᴏʙꜱ ᴄᴀꜱᴏ ᴇꜱꜱᴇ ɴᴜᴍᴇʀᴏ ꜱᴇᴊᴀ ʙᴀɴɪᴅᴏ 
 ║ ᴠᴇᴊᴀ ᴀꜱ ʀᴇᴅᴇꜱ ꜱᴏᴄɪᴀɪꜱ ᴅᴏ ʙᴏᴛ ᴘᴀʀᴀ 
@@ -16,8 +17,6 @@ const help = (prefix) => {
 ║ ❯ *${prefix}tsticker*
 ║ ❯ *${prefix}tts*
 ║ ❯ *${prefix}lolih*
-║ ❯ *${prefix}
-║ ❯ *${prefix}
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓸𝓻𝓼𝓮 (OFF)❮ ════════
 ║ ❯ *${prefix}txtomorse* <text>
 ║ ❯ *${prefix}morsetotxt* <text>
@@ -51,7 +50,7 @@ const help = (prefix) => {
 ║ ❯ *${prefix}meme*
 ║ ❯ *${prefix}memeindo*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓪𝓾𝓭𝓲𝓸 ❮ ════════
-║ ❯ *${prefix}gtts* <la> <text>
+║ ❯ *${prefix}tts* <la> <text>
 ║ ❯ *${prefix}playlist*
 ║ ❯ *${prefix}ytmp3* <link youtube>
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓪𝓷𝓲𝓶𝓮 (OFF)❮ ═══════
@@ -62,15 +61,15 @@ const help = (prefix) => {
 ║ ❯ *${prefix}nekoanime*
 ║ ❯ *${prefix}wait* <caption, reply image>
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓸𝓻𝓷𝓸 ❮ ════════
-║ ❯ *${prefix}hentai
-║ ❯ *${prefix}porno
-║ ❯ *${prefix}mia
-║ ❯ *${prefix}mia1
-║ ❯ *${prefix}mia2
-║ ❯ *${prefix}belle
-║ ❯ *${prefix}belle1
-║ ❯ *${prefix}belle2
-║ ❯ *${prefix}belle3
+║ ❯ *${prefix}hentai*
+║ ❯ *${prefix}porno*
+║ ❯ *${prefix}mia*
+║ ❯ *${prefix}mia1*
+║ ❯ *${prefix}mia2*
+║ ❯ *${prefix}belle*
+║ ❯ *${prefix}belle1*
+║ ❯ *${prefix}belle2*
+║ ❯ *${prefix}belle3*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓰𝓻𝓾𝓹𝓸 ❮ ════════
 ║ ❯ *${prefix}linkgroup*
 ║ ❯ *${prefix}marcar* (Somente adms do grupo podem usar)
