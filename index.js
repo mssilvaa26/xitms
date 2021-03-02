@@ -7,7 +7,6 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
-const { help1 } = require('./src/help1')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
@@ -174,10 +173,6 @@ async function starts() {
 				case 'help':
 				case 'menu':
 					client.sendMessage(from, help(prefix), text)
-					break
-					case 'help1':
-				case 'menu1':
-					client.sendMessage(from, help1(prefix), text)
 					break
 				case 'info':
 					me = client.user
@@ -365,7 +360,7 @@ async function starts() {
 				case 'dono':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://i.imgur.com/d1M6lOz.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: '*CRIADOR:* LZKMAKKER\n*WPP:* wa.me/+5584998660474\n*INSTA:* _.alannz._\n\n\n*Digite *.bot* para ver comandos basicos para criar um bot'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: '*Criador:* ℳᵃᵗᵉᵘᵟ🇮🇱⃢⃟࿐\n*WPP:* wa.me/+5531971794309\n*Insta:* @xhit.de.israel'})
 					break
 				case 'belle2':
 					memein = await kagApi.memeindo()
@@ -442,6 +437,26 @@ async function starts() {
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjVCGkGDxARumfloekQMCazM8uvpj2AgW2lg&usqp=CAU`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '👀️'})
 					break
+				case 'play':
+                reply(mess.wait)
+                anu = await fetchJson(`https://api.vhtear.com/ytmp3?query=${body.slice(6)}&apikey=yourapikey`)
+               if (anu.error) return reply(anu.error)
+                 infomp3 = `*Lagu Ditemukan!!!*\nJudul : ${anu.result.title}\nDurasi : ${anu.result.duration}\nUkuran : ${anu.result.size}\n\n*TUNGGU SEBENTAR LAGI DIKIRIM MOHON JANGAN SPAM YA SAYANG*`
+                buffer = await getBuffer(anu.result.thumb)
+                lagu = await getBuffer(anu.result.mp3)
+                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                    break
+                case 'linkgroup':
+				case 'linkgrup':
+				case 'linkgc':
+				    client.updatePresence(from, Presence.composing) 
+				    if (!isGroup) return reply(mess.only.group)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					linkgc = await client.groupInviteCode (from)
+					yeh = `https://chat.whatsapp.com/${linkgc}\n\nLink Group *${groupName}*`
+					client.sendMessage(from, yeh, text, {quoted: mek, detectLinks: false})
+					break
 				case 'nsfwloli':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJhzKetbU3pzhoZdaIo6qBklCzwvmCCOznbg&usqp=CAU`)
@@ -468,7 +483,7 @@ async function starts() {
 					prefix = args[0]
 					reply(`O prefixo foi alterado com sucesso para : ${prefix}`)
 					break
-				case 'lolih':
+				case 'loli':
                     gatauda = body.slice(6)
                                        reply(mess.wait)
                     anu = await fetchJson(`https://tobz-api.herokuapp.com/api/randomloli?apikey=BotWeA`, {method: 'get'})
@@ -706,13 +721,6 @@ async function starts() {
 					}
 					mentions(teks, groupAdmins, true)
 					break
-                                case 'linkgroup':
-                                        if (!isGroup) return reply(mess.only.group)
-                                        if (!isGroupAdmins) return reply(mess.only.admin)
-                                        if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-                                        linkgc = await client.groupInviteCode(from)
-                                        reply('https://chat.whatsapp.com/'+linkgc)
-                                        break
                                 case 'leave':
                                         if (!isGroup) return reply(mess.only.group)
                                         if (isGroupAdmins || isOwner) {

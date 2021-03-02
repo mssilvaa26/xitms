@@ -1,40 +1,28 @@
 const help = (prefix) => {
 	return `𝕾𝖊𝖏𝖆𝖒 𝕭𝖊𝖒-𝖁𝖎𝖓𝖉𝖔𝖘 𝖆𝖔 𝕸𝖊𝖓𝖚 𝖉𝖔
-💎 ▁▂▃༻XHIT ISRAEL BOT 1.0༺▃▂▁ 💎
+🇮🇱 ▁▂▃༻𝖝𝖍𝖎𝖙 𝖉𝖊 𝖎𝖘𝖗𝖆𝖊𝖑 1.0༺▃▂▁ 🇮🇱
 
 ╔════ ❯ 𝓡𝓮𝓭𝓮𝓼 𝓼𝓸𝓬𝓲𝓪𝓲𝓼 ❮ ══════════
-║ ❯ insta: @xit_de_israel
-║ ❯ Grupo: https://chat.whatsapp.com/
-║H7cHfiVN62e1xzR3ZtdEwg
-║
-║ !ᴏʙꜱ ᴄᴀꜱᴏ ᴇꜱꜱᴇ ɴᴜᴍᴇʀᴏ ꜱᴇᴊᴀ ʙᴀɴɪᴅᴏ 
-║ ᴠᴇᴊᴀ ᴀꜱ ʀᴇᴅᴇꜱ ꜱᴏᴄɪᴀɪꜱ ᴅᴏ ʙᴏᴛ ᴘᴀʀᴀ 
-║ ᴠᴇʀ ᴏ ɴᴏᴠᴏ ɴᴜᴍᴇʀᴏ!
+║ ❯ Insta: @xhit.de.israel
+║ ❯ Grupo: chat.whatsapp.com/H7cHfiVN62e1xzR3ZtdEwg
 ╠═════ ❯ 𝓬𝓶𝓭 𝓹𝓻𝓲𝓷𝓬𝓲𝓹𝓪𝓲𝓼 ❮ ══════
 ║ ❯ *${prefix}sticker ou stiker*
 ║ ❯ *${prefix}sticker nobg*
 ║ ❯ *${prefix}toimg*
 ║ ❯ *${prefix}tsticker*
-║ ❯ *${prefix}tts*
-║ ❯ *${prefix}lolih*
-╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓸𝓻𝓼𝓮 (OFF)❮ ════════
+║ ❯ *${prefix}loli*
+║ ❯ *${prefix}dono*
+║ ❯ *${prefix}qrcode* <text>
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓸𝓻𝓼𝓮 ⚠️(OFF)❮ ════════
 ║ ❯ *${prefix}txtomorse* <text>
 ║ ❯ *${prefix}morsetotxt* <text>
-╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓮𝓿𝓲𝓼𝓪𝓸(OFF) ❮ ════════
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓮𝓿𝓲𝓼𝓪𝓸⚠️(OFF) ❮ ════════
 ║ ❯ *${prefix}ship* <num1> <num2>
 ║ ❯ *${prefix}corno* <num1>
 ║ ❯ *${prefix}randomship* <num1 or nothin>
 ║ ❯ *${prefix}gado* <num1>
 ║ ❯ *${prefix}gay* <num1>
-╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓺𝓻𝓬𝓸𝓭𝓮 (off)❮ ════════
-║ ❯ *${prefix}qrcode* <text>
-║ ❯ *${prefix}qrcodegb* <text>
-║ ❯ *${prefix}qrcodebb* <text>
-║ ❯ *${prefix}qrcoderb* <text>
-║ ❯ *${prefix}qrcodebg* <text>
-║ ❯ *${prefix}qrcodebb1* <text>
-║ ❯ *${prefix}qrcodebr* <text>
-╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓽𝓮𝔁𝓽𝓸 (off)❮ ═════════
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓽𝓮𝔁𝓽𝓸 ⚠️(OFF )❮ ═════════
 ║ ❯ *${prefix}textcomands*
 ║ ❯ *${prefix}repeat* <text>
 ║ ❯ *${prefix}ocr* <caption, reply sticker>
@@ -51,15 +39,16 @@ const help = (prefix) => {
 ║ ❯ *${prefix}memeindo*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓪𝓾𝓭𝓲𝓸 ❮ ════════
 ║ ❯ *${prefix}tts* <la> <text>
-║ ❯ *${prefix}playlist*
-║ ❯ *${prefix}ytmp3* <link youtube>
-╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓪𝓷𝓲𝓶𝓮 (OFF)❮ ═══════
-║ ❯ *${prefix}randomanime*
-║ ❯ *${prefix}randomshota*
-║ ❯ *${prefix}randomkiss*
-║ ❯ *${prefix}randomhug*
+║ ❯ *${prefix}play* <link yt>
+║ ❯ *${prefix}ytmp3* <link yt>
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓪𝓷𝓲𝓶𝓮 ❮ ═══════
+║ ❯ *${prefix}neonime*
+║ ❯ *${prefix}pokemon*
+║ ❯ *${prefix}loli*
+║ ❯ *${prefix}waifu*
+║ ❯ *${prefix}wallpaper*
+║ ❯ *${prefix}neko*
 ║ ❯ *${prefix}nekoanime*
-║ ❯ *${prefix}wait* <caption, reply image>
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓸𝓻𝓷𝓸 ❮ ════════
 ║ ❯ *${prefix}hentai*
 ║ ❯ *${prefix}porno*
@@ -72,14 +61,14 @@ const help = (prefix) => {
 ║ ❯ *${prefix}belle3*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓰𝓻𝓾𝓹𝓸 ❮ ════════
 ║ ❯ *${prefix}linkgroup*
-║ ❯ *${prefix}marcar* (Somente adms do grupo podem usar)
-║ ❯ *${prefix}simih* (Somente adms do podem usar
+║ ❯ *${prefix}marcar*
+║ ❯ *${prefix}simih* 
 ║ ❯ *${prefix}add* 
 ║ ❯ *${prefix}kick*
 ║ ❯ *${prefix}promote*
 ║ ❯ *${prefix}demote*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓸𝓹𝓲𝓮𝓽𝓪𝓻𝓲𝓸 ❮ ═══
-║ ❯ *${prefix}*setprefix*
+║ ❯ *${prefix}setprefix*
 ╚════════════════════`
 }
 
