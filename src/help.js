@@ -13,6 +13,9 @@ const help = (prefix) => {
 ║ ❯ *${prefix}loli*
 ║ ❯ *${prefix}dono*
 ║ ❯ *${prefix}qrcode* <text>
+║ ❯ *${prefix}pack* (NOVO)
+║ ❯ *${prefix}brainly* (NOVO)
+║ ❯ *${prefix}chentai*(NOVO)
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓸𝓻𝓼𝓮 ⚠️(OFF)❮ ════════
 ║ ❯ *${prefix}txtomorse* <text>
 ║ ❯ *${prefix}morsetotxt* <text>
@@ -21,7 +24,7 @@ const help = (prefix) => {
 ║ ❯ *${prefix}corno* <num1>
 ║ ❯ *${prefix}randomship* <num1 or nothin>
 ║ ❯ *${prefix}gado* <num1>
-║ ❯ *${prefix}gay* <num1>
+║ ❯ *${prefix}gay1* <num1> 
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓽𝓮𝔁𝓽𝓸 ⚠️(OFF )❮ ═════════
 ║ ❯ *${prefix}textcomands*
 ║ ❯ *${prefix}repeat* <text>
@@ -59,6 +62,7 @@ const help = (prefix) => {
 ║ ❯ *${prefix}belle1*
 ║ ❯ *${prefix}belle2*
 ║ ❯ *${prefix}belle3*
+║ ❯*${prefix}xvideos [titulo]* (NOVO)
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓰𝓻𝓾𝓹𝓸 ❮ ════════
 ║ ❯ *${prefix}linkgroup*
 ║ ❯ *${prefix}marcar*

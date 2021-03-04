@@ -7,6 +7,8 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
+const { chentai } = require('./src/chentai')
+const { pack } = require('./src/pack')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
@@ -305,6 +307,21 @@ async function starts() {
                 buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?data=${body.slice(8)}&size=1080%C3%971080`)
 				client.sendMessage(from, buff, image, {quoted: mek})
 				break
+			case 'pack':
+                client.sendMessage(from, pack(prefix), text, { quoted: mek })
+                break
+			case 'play':
+                reply(mess.wait)
+                play = body.slice(5)
+                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
+               if (anu.error) return reply(anu.error)
+                 infomp3 = `*MUSICA ENCONTRADA!!!*\nTítulo : ${anu.result.title}\nUrl : ${anu.result.source}\nTamanho : ${anu.result.size}\n\n*ESPERE UM POUQUINHO, N SPAME O CHAT*`
+                buffer = await getBuffer(anu.result.thumbnail)
+                lagu = await getBuffer(anu.result.url_audio)
+                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                await limitAdd(sender)
+                break
 				case 'tts':
 				   client.updatePresence(from, Presence.recording) 
 				   if (args.length < 1) return client.sendMessage(from, 'Qual é o código da linguagem?', text, {quoted: mek})
@@ -326,9 +343,13 @@ async function starts() {
 					})
 					break
 				case 'meme':
-					meme = await kagApi.memes()
-					buffer = await getBuffer(`https://imgur.com/${meme.hash}.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
+					reply(mess.wait)
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=MEME BRASIL`, {method: 'get'})
+					ri = JSON.parse(JSON.stringify(anu));
+					ze =  ri[Math.floor(Math.random() * ri.length)];
+					nye = await getBuffer(ze)
+					client.sendMessage(from, nye, image, { caption: 'cringe️', quoted: mek })
+					await limitAdd(sender) 	
 					break
 				case 'porno':
 					memein = await kagApi.memeindo()
@@ -359,7 +380,7 @@ async function starts() {
 					break
 				case 'dono':
 					memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://i.imgur.com/d1M6lOz.jpg`)
+					buffer = await getBuffer(``)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '*Criador:* ℳᵃᵗᵉᵘᵟ🇮🇱⃢⃟࿐\n*WPP:* wa.me/+5531971794309\n*Insta:* @xhit.de.israel'})
 					break
 				case 'belle2':
@@ -412,6 +433,9 @@ async function starts() {
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ7ot6RZPnXSJFFKVjPoeXHjTYyi6uk5W_mA&usqp=CAU`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '👀️'})
 					break
+				case 'chentai':
+                    client.sendMessage(from, chentai(prefix), text, { quoted: mek })
+                    break
 				case 'mia':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaKeXU5ryvFTNz6nJm9cioGCoeqlZQSh1Mgw&usqp=CAU`)
@@ -436,6 +460,25 @@ async function starts() {
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjVCGkGDxARumfloekQMCazM8uvpj2AgW2lg&usqp=CAU`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '👀️'})
+					break
+				case 'gay1':
+					gay = body.slice(13)
+		   anu = await fetchJson(`https://arugaz.herokuapp.com/api/howgay`, {method: 'get'})
+		   hasil = `Veja os dados do Gay ${gay}\n\n\nPercentagem Gay : ${anu.persen}%\nAlerta!!! : gay, mas não cego`
+		   reply(hasil)
+		   await limitAdd(sender)
+					break
+				case 'brainly':
+                    brien = body.slice(9)
+					brainly(`${brien}`).then(res => {
+					teks = '♡───────────♡\n'
+					for (let Y of res.data) {
+						teks += `\n*「 BRAINLY 」*\n\n*➸ Questão:* ${Y.pertanyaan}\n\n*➸ Resposta:* ${Y.jawaban[0].text}\n♡───────────♡\n`
+					}
+					client.sendMessage(from, teks, text, {quoted: mek, detectLinks: false})
+                        console.log(res)
+                    })
+					await limitAdd(sender)
 					break
 				case 'play':
                 reply(mess.wait)
@@ -462,6 +505,16 @@ async function starts() {
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJhzKetbU3pzhoZdaIo6qBklCzwvmCCOznbg&usqp=CAU`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Rum️'})
 					break
+				case 'xvideos':
+              	    if (args.length < 1) return reply('Cadê o texto, mano?')
+                    anu = await fetchJson(`https://api.arugaz.my.id/api/media/xvideo/search?query=${body.slice(9)}`, {method: 'get'})
+                    teks = `===============\n`
+                    for (let b of anu.result) {
+                    teks += `• Título: ${b.title}\n• Info: ${b.info}\n• Link: ${b.link}\n===============\n`
+                    }
+                    reply(teks.trim())
+			     	await limitAdd(sender) 
+			     	break 
 				case 'reislin':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKlc2hMIJ4PjW5tIXltrKe6xeBoKPLKTZMnQ&usqp=CAU`)
