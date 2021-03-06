@@ -12,7 +12,7 @@ const help = (prefix) => {
 ║ ❯ *${prefix}tsticker*
 ║ ❯ *${prefix}loli*
 ║ ❯ *${prefix}dono*
-║ ❯ *${prefix}qrcode* <text>
+║ ❯ *${prefix}qrcode* <link>
 ║ ❯ *${prefix}pack* (NOVO)
 ║ ❯ *${prefix}brainly* (NOVO)
 ║ ❯ *${prefix}chentai*(NOVO)
@@ -25,18 +25,10 @@ const help = (prefix) => {
 ║ ❯ *${prefix}randomship* <num1 or nothin>
 ║ ❯ *${prefix}gado* <num1>
 ║ ❯ *${prefix}gay1* <num1> 
-╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓽𝓮𝔁𝓽𝓸 ⚠️(OFF )❮ ═════════
-║ ❯ *${prefix}textcomands*
-║ ❯ *${prefix}repeat* <text>
-║ ❯ *${prefix}ocr* <caption, reply sticker>
-║ ❯ *${prefix}tiktokstalk* <tik tok name>
-║ ❯ *${prefix}nethunter*
-║ ❯ *${prefix}signome* <name>
-║ ❯ *${prefix}idioma*
-║ ❯ *${prefix}frase*
-║ ❯ *${prefix}destrava*
-║ ❯ *${prefix}wppim*
-║ ❯ *${prefix}db*
+╠═════ ❯ 𝓖𝓮𝓻𝓪𝓭𝓸𝓻𝓮𝓼 ❮ ═════════
+║ ❯ *${prefix}gcpf*
+║ ❯ *${prefix}gbin*
+║ ❯ *${prefix}gpessoa*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓮𝓶𝓮 ❮ ════════
 ║ ❯ *${prefix}meme*
 ║ ❯ *${prefix}memeindo*
@@ -52,6 +44,9 @@ const help = (prefix) => {
 ║ ❯ *${prefix}wallpaper*
 ║ ❯ *${prefix}neko*
 ║ ❯ *${prefix}nekoanime*
+║ ❯ *${prefix}minato*
+║ ❯ *${prefix}boruto*
+║ ❯ *${prefix}animecry*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓸𝓻𝓷𝓸 ❮ ════════
 ║ ❯ *${prefix}hentai*
 ║ ❯ *${prefix}porno*
@@ -64,15 +59,23 @@ const help = (prefix) => {
 ║ ❯ *${prefix}belle3*
 ║ ❯*${prefix}xvideos [titulo]* (NOVO)
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓰𝓻𝓾𝓹𝓸 ❮ ════════
-║ ❯ *${prefix}linkgroup*
 ║ ❯ *${prefix}marcar*
 ║ ❯ *${prefix}simih* 
 ║ ❯ *${prefix}add* 
 ║ ❯ *${prefix}kick*
-║ ❯ *${prefix}promote*
-║ ❯ *${prefix}demote*
-╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓸𝓹𝓲𝓮𝓽𝓪𝓻𝓲𝓸 ❮ ═══
-║ ❯ *${prefix}setprefix*
+║ ❯ *${prefix}closegc* (NOVO)
+║ ❯  *${prefix}opengc* (NOVO) (TESTE)
+║ ❯ *${prefix}antilink* 1 (NOVO) (TESTE)
+║ ❯ *${prefix}antiracismo on* (NOVO) (TESTE)
+║ ❯ *${prefix}banir* (NOVO) (TESTE)
+║ ❯  *${prefix}admins* (NOVO) (TESTE)
+║ ❯ *${prefix}linkgp* 
+║ ❯  *${prefix}promover* 
+║ ❯ *${prefix}rebaixar* 
+║ ❯ *${prefix}bemvindo* 1 (NOVO) (TESTE)
+║ ❯ *${prefix}grupoinfo* (NOVO) (TESTE)
+║ ❯ *${prefix}setdesc* (NOVO) (TESTE)
+║ ❯ *${prefix}setfoto* (NOVO) (TESTE
 ╚════════════════════`
 }
 
