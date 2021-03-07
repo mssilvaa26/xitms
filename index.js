@@ -19,7 +19,6 @@ const { exec } = require('child_process')
 const kagApi = require('@kagchi/kag-api')
 const fetch = require('node-fetch')
 const tiktod = require('tiktok-scraper')
-const antilink = JSON.parse(fs.readFileSync('./database/json/antilink.json'))
 const ffmpeg = require('fluent-ffmpeg')
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const imgbb = require('imgbb-uploader')
@@ -150,7 +149,6 @@ async function starts() {
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : true
 			const isSimi = isGroup ? samih.includes(from) : false
-			const isAntiLink = isGroup ? antilink.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
@@ -171,70 +169,6 @@ async function starts() {
 			const isQuotedVideo = type === 'extendedTextMessage' && content.includes('videoMessage')
 			const isQuotedSticker = type === 'extendedTextMessage' && content.includes('stickerMessage')
 			if (!isGroup && isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
-			if (messagesC.includes("://chat.whatsapp.com/")){
-		if (!isGroup) return
-		if (!isAntiLink) return
-		if (isGroupAdmins) return reply('vc é admin, então n irei te dar ban por usar links, rlx 🙂')
-		client.updatePresence(from, Presence.composing)
-		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
-		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-		reply(`link detectado ${sender.split("@")[0]} voce sera expulso deste grupo em 5 segundos`)
-		setTimeout( () => {
-			client.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
-		}, 5000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("1 segundo")
-		}, 4000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("2 segundos")
-		}, 3000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("3 segundos")
-		}, 2000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("4 segundos")
-		}, 1000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("5 segundo KKKKKKKK tchau otário 😔🤙")
-		}, 0)
-	}
-	        if (messagesC.includes("https://")){
-		if (!isGroup) return
-		if (!isAntiLink) return
-		if (isGroupAdmins) return reply('vc é admin, então n irei te dar ban por usar links, rlx 🙂')
-		client.updatePresence(from, Presence.composing)
-		if (messagesC.includes("#izinadmin")) return reply("#izinadmin diterima")
-		var kic = `${sender.split("@")[0]}@s.whatsapp.net`
-		reply(`link detectado ${sender.split("@")[0]} voce sera expulso deste grupo em 5 segundos`)
-		setTimeout( () => {
-			client.groupRemove(from, [kic]).catch((e)=>{reply(`*ERR:* ${e}`)})
-		}, 5000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("1 segundo")
-		}, 4000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("2 segundos")
-		}, 3000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("3 segundos")
-		}, 2000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("4 segundos")
-		}, 1000)
-		setTimeout( () => {
-			client.updatePresence(from, Presence.composing)
-			reply("5 segundo KKKKKKKK tchau otário 😔🤙")
-		}, 0)
-	}
 			if (!isGroup && !isCmd) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'args :', color(args.length))
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
@@ -374,27 +308,6 @@ async function starts() {
                 buff = await getBuffer(`https://api.qrserver.com/v1/create-qr-code/?data=${body.slice(8)}&size=1080%C3%971080`)
 				client.sendMessage(from, buff, image, {quoted: mek})
 				break
-			case 'antilink':
-                    if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (args.length < 1) return reply('digite 1 para ativar ')
-					if (Number(args[0]) === 1) {
-						if (isAntiLink) return reply('o anti-link está ativo')
-						antilink.push(from)
-						fs.writeFileSync('./database/json/antilink.json', JSON.stringify(antilink))
-						reply('Grupo anti-link ativado com sucesso neste grupo ✔️')
-						client.sendMessage(from,`Atencao a todos os membros ativos deste grupo anti-link. ee você enviar um link de grupo, voce sera expulso daqui  grupo`, text)
-					} else if (Number(args[0]) === 0) {
-						if (!isantilink) return reply('O modo de grupo anti-link foi desabilitado ')
-						var ini = anti.clientOf(from)
-						antilink.splice(ini, 1)
-						fs.writeFileSync('./src/antilink.json', JSON.stringify(antilink))
-						reply('Desativar grupo anti-link com sucesso neste grupo ✔️')
-					} else {
-						reply('1 para ativar, 0 para desativar ')
-					}
-					break
 				case 'bemvindo':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)

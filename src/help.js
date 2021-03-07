@@ -65,7 +65,6 @@ const help = (prefix) => {
 ║ ❯ *${prefix}kick*
 ║ ❯ *${prefix}closegc* (NOVO)
 ║ ❯  *${prefix}opengc* (NOVO) (TESTE)
-║ ❯ *${prefix}antilink* 1 (NOVO) (TESTE)
 ║ ❯ *${prefix}banir* (NOVO) (TESTE)
 ║ ❯  *${prefix}admins* (NOVO) (TESTE)
 ║ ❯ *${prefix}linkgp* 
