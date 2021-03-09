@@ -11,6 +11,7 @@ const { chentai } = require('./src/chentai')
 const { pack } = require('./src/pack')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
+const { destrava } = require('./src/destrava')
 const { recognize } = require('./lib/ocr')
 const fs = require('fs')
 const { gbin } = require('./src/gbin')
@@ -426,20 +427,14 @@ async function starts() {
 					break
 				case 'dono':
 					memein = await kagApi.memeindo()
-					buffer = await getBuffer(``)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '*Criador:* ℳᵃᵗᵉᵘᵟ🇮🇱⃢⃟࿐\n*WPP:* wa.me/+5531971794309\n*Insta:* @xhit.de.israel'})
-					break
-				case 'belle2':
-					memein = await kagApi.memeindo()
-					buffer = await getBuffer(``)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'slc'})
 					break
 				case 'bot':
 			     	memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://i.imgur.com/dPUVFF6.png`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: ''})
 					break
-				case 'belle3':
+				case 'belle1':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://1.bp.blogspot.com/-3K_b14RzHTA/XwTW7SQTPRI/AAAAAAAAPtY/UOaKURECbzwXfvASa3g6Pz0D_Ha73Dw4wCLcBGAsYHQ/s1600/boabronha_10.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'olha p isso mano, pqp '})
@@ -457,12 +452,12 @@ async function starts() {
 				case 'bomdia':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://i.imgur.com/7VL9cFf.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Bom dia, vcs sao fodas ❤️'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Bom dia, vcs sao fodas ❤️🇮🇱'})
 					break
 				case 'boatarde':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://i.imgur.com/JaO3yoV.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Boa tarde, rapeize 😎👍'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Boa tarde, amamos vocês! 😎👍'})
 					break
 				case 'boanoite':
 					memein = await kagApi.memeindo()
@@ -496,11 +491,6 @@ async function starts() {
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtbo5EcVSGj-IvEVznHIgMZ9vjFptZfvprtg&usqp=CAU`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '️💆'})
-					break
-				case 'canal':
-					memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://imgur.com/gallery/xuTCBPO`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: '️*canal do zeus:*\n\n https://bit.ly/3iIlHmc'})
 					break
 				case 'mia1':
 					memein = await kagApi.memeindo()
@@ -539,34 +529,41 @@ async function starts() {
 					})
 					await limitAdd(sender) 
 					break 
-				case 'gay1':
+				case 'gay':
 					gay = body.slice(13)
 		   anu = await fetchJson(`https://arugaz.herokuapp.com/api/howgay`, {method: 'get'})
-		   hasil = `Veja os dados do Gay ${gay}\n\n\nPercentagem Gay : ${anu.persen}%\nAlerta!!! : gay, mas não cego`
+		   hasil = `*Veja os dados do Gay *${gay}\n\n\nPorcentagem Gay : ${anu.persen}%\nAlerta!!! : gay, mas não cego`
 		   reply(hasil)
 		   await limitAdd(sender)
 					break
-				case 'closegc':
+				case 'corno':
+					gay = body.slice(13)
+		   anu = await fetchJson(`https://arugaz.herokuapp.com/api/howgay`, {method: 'get'})
+		   hasil = `*Veja os dados do chifrudo \n\n\nPorcentagem : ${anu.persen}%\nAlerta!!! : chifrudo sim, esquecido jamais.`
+		   reply(hasil)
+		   await limitAdd(sender)
+					break
+				case 'closegp':
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					var nomor = mek.participant
 					const close = {
-					text: `Grupo fechado pelo administrador @${nomor.split("@s.whatsapp.net")[0]}\nsekarang *apenas administrador* quem pode enviar mensagens`,
+					text: `Grupo fechado pelo administrador @${nomor.split("@s.whatsapp.net")[0]} *apenas adms* podem enviar mensagens`,
 					contextInfo: { mentionedJid: [nomor] }
 					}
 					client.groupSettingChange (from, GroupSettingChange.messageSend, true);
 					reply(close)
 					break
-				case 'opengc':
+				case 'opengp':
                 case 'bukagc':
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					open = {
-					text: `Grupo aberto pelo administrador @${sender.split("@")[0]}\nsekarang *todos os participantes* pode enviar mensagens`,
+					text: `Grupo aberto pelo administrador @${sender.split("@")[0]}\nsekarang *membros comuns* agora podem enviar mensagens`,
 					contextInfo: { mentionedJid: [sender] }
 					}
 					client.groupSettingChange (from, GroupSettingChange.messageSend, false);
@@ -596,7 +593,7 @@ async function starts() {
                     break
                 case 'linkgroup':
 				case 'linkgrup':
-				case 'linkgc':
+				case 'linkgp':
 				    client.updatePresence(from, Presence.composing) 
 				    if (!isGroup) return reply(mess.only.group)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -788,6 +785,9 @@ async function starts() {
 					}
 					reply('Excluido todos os chats com sucesso :)')
 					break
+				case 'destrava':
+                    client.sendMessage(from, destrava(prefix), text, { quoted: mek })
+                    break
 				case 'ts':
 					if (!isOwner) return reply('Quem é você lek?')
 					if (args.length < 1) return reply('.......')
@@ -924,7 +924,7 @@ async function starts() {
 						fs.unlinkSync(media)
 						if (err) return reply('❌ Falha ao converter adesivos em imagens ❌')
 						buffer = fs.readFileSync(ran)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: '>//<'})
+						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'é nois zé 🤝'})
 						fs.unlinkSync(ran)
 					})
 					break
@@ -978,7 +978,7 @@ async function starts() {
 						reply('1 para ativar, 0 para desativar')
 					}
                                       break
-				case 'clone':
+				case 'clonar':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (args.length < 1) return reply('A tag alvo que você deseja clonar')

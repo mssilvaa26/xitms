@@ -3,28 +3,19 @@ const help = (prefix) => {
 🇮🇱 ▁▂▃༻𝖝𝖍𝖎𝖙 𝖉𝖊 𝖎𝖘𝖗𝖆𝖊𝖑 1.0༺▃▂▁ 🇮🇱
 
 ╔════ ❯ 𝓡𝓮𝓭𝓮𝓼 𝓼𝓸𝓬𝓲𝓪𝓲𝓼 ❮ ══════════
-║ ❯ Insta: @xhit.de.israel
+║ ❯ Insta: instagram.com/xhit.de.israel
 ║ ❯ Grupo: chat.whatsapp.com/H7cHfiVN62e1xzR3ZtdEwg
 ╠═════ ❯ 𝓬𝓶𝓭 𝓹𝓻𝓲𝓷𝓬𝓲𝓹𝓪𝓲𝓼 ❮ ══════
 ║ ❯ *${prefix}sticker ou stiker*
 ║ ❯ *${prefix}sticker nobg*
 ║ ❯ *${prefix}toimg*
 ║ ❯ *${prefix}tsticker*
-║ ❯ *${prefix}loli*
-║ ❯ *${prefix}dono*
-║ ❯ *${prefix}qrcode* <link>
-║ ❯ *${prefix}pack* (NOVO)
+║ ❯ *${prefix}pack* 
 ║ ❯ *${prefix}brainly* (NOVO)
-║ ❯ *${prefix}chentai*(NOVO)
-╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓶𝓸𝓻𝓼𝓮 ⚠️(OFF)❮ ════════
-║ ❯ *${prefix}txtomorse* <text>
-║ ❯ *${prefix}morsetotxt* <text>
-╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓮𝓿𝓲𝓼𝓪𝓸⚠️(OFF) ❮ ════════
-║ ❯ *${prefix}ship* <num1> <num2>
-║ ❯ *${prefix}corno* <num1>
-║ ❯ *${prefix}randomship* <num1 or nothin>
-║ ❯ *${prefix}gado* <num1>
-║ ❯ *${prefix}gay1* <num1> 
+║ ❯ *${prefix}info*(NOVO)
+╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓻𝓮𝓿𝓲𝓼𝓪𝓸 ❮ ════════
+║ ❯ *${prefix}gay* <@>
+║ ❯ *${prefix}corno* <@> (TESTE)
 ╠═════ ❯ 𝓖𝓮𝓻𝓪𝓭𝓸𝓻𝓮𝓼 ❮ ═════════
 ║ ❯ *${prefix}gcpf*
 ║ ❯ *${prefix}gbin*
@@ -49,31 +40,37 @@ const help = (prefix) => {
 ║ ❯ *${prefix}animecry*
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓹𝓸𝓻𝓷𝓸 ❮ ════════
 ║ ❯ *${prefix}hentai*
-║ ❯ *${prefix}porno*
 ║ ❯ *${prefix}mia*
 ║ ❯ *${prefix}mia1*
 ║ ❯ *${prefix}mia2*
 ║ ❯ *${prefix}belle*
-║ ❯ *${prefix}belle1*
-║ ❯ *${prefix}belle2*
-║ ❯ *${prefix}belle3*
-║ ❯*${prefix}xvideos [titulo]* (NOVO)
+║ ❯ *${prefix}belle1* 
+║ ❯ *${prefix}pack* (NOVO)
+║ ❯ *${prefix}chentai*(NOVO)
+║ ❯ *${prefix}xvideos* <titulo> (NOVO)
 ╠═════ ❯ 𝓬𝓶𝓭 𝓭𝓮 𝓰𝓻𝓾𝓹𝓸 ❮ ════════
 ║ ❯ *${prefix}marcar*
 ║ ❯ *${prefix}simih* 
 ║ ❯ *${prefix}add* 
 ║ ❯ *${prefix}kick*
-║ ❯ *${prefix}closegc* (NOVO)
-║ ❯  *${prefix}opengc* (NOVO) (TESTE)
-║ ❯ *${prefix}banir* (NOVO) (TESTE)
-║ ❯  *${prefix}admins* (NOVO) (TESTE)
+║ ❯ *${prefix}closegp*
+║ ❯ *${prefix}opengp* 
+║ ❯ *${prefix}banir* (NOVO) 
+║ ❯ *${prefix}admins* (NOVO)
 ║ ❯ *${prefix}linkgp* 
-║ ❯  *${prefix}promover* 
+║ ❯ *${prefix}promover* 
 ║ ❯ *${prefix}rebaixar* 
 ║ ❯ *${prefix}bemvindo* 1 (NOVO) (TESTE)
 ║ ❯ *${prefix}grupoinfo* (NOVO) (TESTE)
 ║ ❯ *${prefix}setdesc* (NOVO) (TESTE)
-║ ❯ *${prefix}setfoto* (NOVO) (TESTE
+║ ❯ *${prefix}setfoto* (NOVO) 
+╠═════ ❯ 𝓞𝓾𝓽𝓻𝓸𝓼 ❮ ════════
+║ ❯ *${prefix}dono*
+║ ❯ *${prefix}bomdia* 
+║ ❯ *${prefix}boatarde* 
+║ ❯ *${prefix}boanoite* 
+║ ❯ *${prefix}qrcode* <link>
+║ ❯ *${prefix}clonar* <@> (NOVO) (TESTE)
 ╚════════════════════`
 }
 

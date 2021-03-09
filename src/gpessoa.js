@@ -1,8 +1,8 @@
 const gpessoa = (prefix) => {
 
-return `*GERADORE DE DADOS PESSOAIS:*
+return `*GERADOR DE DADOS PESSOAIS:*
 
-*NABUTO LS* HEHEHEHE
+🇮🇱 *𝓧𝓱𝓲𝓽 𝓭𝓮 𝓘𝓼𝓻𝓪𝓮𝓵* 🇮🇱
 
 nome: Ester Giovanna Alice Nunes
 idade: 59

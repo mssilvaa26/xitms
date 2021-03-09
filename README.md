@@ -9,7 +9,7 @@
 </details>
 
 ### ATENÇÃO
-DESEJA RE-CARREGAR O SCRIPT? AMO MEU NOME / LINK CHANEL .... NÃO ALTERE A INFORMAÇÃO !!!
+DESEJA RE-CARREGAR O SCRIPT? NÃO ALTERE A INFORMAÇÃO !!!
 
 ## NOTA:>
 NÃO VENDE / COMPRE O SCRIPT, ESTE SCRIPT É 100% GRATUITO PARA OS USUÁRIOS DO TERMUX
@@ -40,7 +40,7 @@ INSTALAÇÃO:
 
 ## CARACTERÍSTICAS  <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Earth.gif" width="29px">
 
-| VINIZEUS      |                   Característica        |
+| XHIT DE ISRAEL BOT     |                   Característica        |
 | :-----------: | :------------------------------: |
 |       ✅       | Criador de adesivos                  |
 |       ✅       | Nulis                            |
@@ -77,7 +77,7 @@ INSTALAÇÃO:
 |       ✅       | 18+.                             |
 |       ✅       | MAIS recursos em breve 🍂        |
 
-LZK DOMINA PORRA🐦❤️
+ISRAEL DOMINA PORRA🐦❤️
 
 <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Mario_Gameplay.gif" alt="Mario Game" width="600" />
 

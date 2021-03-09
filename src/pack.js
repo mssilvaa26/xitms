@@ -1,7 +1,7 @@
 const pack = (prefix) => {
     return `*PACKS:*
     
-*XHIT DE ISRAEL PORRA*
+*🇮🇱 𝓧𝓱𝓲𝓽 𝓭𝓮 𝓘𝓼𝓻𝓪𝓮𝓵  🇮🇱*
 
 Belle delphine : https://photos.app.goo.gl/Jr4Qk1dFSJepPdRc7 
 
