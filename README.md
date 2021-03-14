@@ -1,15 +1,12 @@
-## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> FEITO E TRADUZIDO POR: MATEUSSS NE PAE
+## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> FEITO E TRADUZIDO POR: ℳᵃᵗᵉᵘᵟ🇮🇱⃢⃟࿐
 <p align="center">
-<img src="https://media-giphy-com.cdn.ampproject.org/ii/w820/s/media.giphy.com/media/1g3A0gpaidxWcL9Mfo/giphy.gif" width="230" height="230"/>
+width="230" height="230"/>
 </p>
 <br>
 
 
  
 </details>
-
-### ATENÇÃO
-DESEJA RE-CARREGAR O SCRIPT? NÃO ALTERE A INFORMAÇÃO !!!
 
 ## NOTA:>
 NÃO VENDE / COMPRE O SCRIPT, ESTE SCRIPT É 100% GRATUITO PARA OS USUÁRIOS DO TERMUX
