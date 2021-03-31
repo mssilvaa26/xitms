@@ -11,12 +11,13 @@ const { chentai } = require('./src/chentai')
 const { pack } = require('./src/pack')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson } = require('./lib/fetcher')
-const { destrava } = require('./src/destrava')
 const { recognize } = require('./lib/ocr')
 const fs = require('fs')
+const { gcpf } = require('./src/gcpf')
 const { gbin } = require('./src/gbin')
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
+const { gpessoa } = require('./src/gpessoa')
 const kagApi = require('@kagchi/kag-api')
 const fetch = require('node-fetch')
 const tiktod = require('tiktok-scraper')
@@ -26,10 +27,134 @@ const imgbb = require('imgbb-uploader')
 const lolis = require('lolis.life')
 const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
-const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
+const nsfw = JSON.parse(fs.readFileSync('./database/json/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
+const vcard = 'BEGIN:VCARD\n'
+            + 'VERSION:3.0\n' 
+            + 'FN:ℳᵃᵗᵉᵘᵟ🇮🇱⃢⃟࿐\n' // Nama kamu
+            + 'ORG:Xhit de Israel;\n' // Nama bot
+            + 'TEL;type=CELL;type=VOICE;waid=5531971794309:+55 317179-4309\n' //Nomor whatsapp kamu
+            + 'END:VCARD'
 prefix = '.'
 blocked = []
+limitawal = '999999999'
+cr = '*Mateuss*'
+
+/*********** LOAD FILE ***********/
+const _leveling = JSON.parse(fs.readFileSync('./database/group/leveling.json'))
+const antilink = JSON.parse(fs.readFileSync('./database/json/antilink.json'))
+const event = JSON.parse(fs.readFileSync('./database/json/event.json'))
+const _level = JSON.parse(fs.readFileSync('./database/user/level.json'))
+const _limit = JSON.parse(fs.readFileSync('./database/json/limit.json'))
+/*********** END LOAD ***********/
+
+/********** FUNCTION ***************/
+const getLevelingXp = (userId) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                return _level[position].xp
+            }
+        }
+
+        const getLevelingLevel = (userId) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                return _level[position].level
+            }
+        }        
+
+        const getLevelingId = (userId) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                return _level[position].jid
+            }
+        }
+
+        const addLevelingXp = (userId, amount) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                _level[position].xp += amount
+                fs.writeFileSync('./database/user/level.json', JSON.stringify(_level))
+            }
+        }
+
+        const addLevelingLevel = (userId, amount) => {
+            let position = false
+            Object.keys(_level).forEach((i) => {
+                if (_level[i].jid === userId) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                _level[position].level += amount
+                fs.writeFileSync('./database/user/level.json', JSON.stringify(_level))
+            }
+        }
+
+        const addLevelingId = (userId) => {
+            const obj = {jid: userId, xp: 1, level: 1}
+            _level.push(obj)
+            fs.writeFileSync('./database/user/level.json', JSON.stringify(_level))
+        }
+        
+                const getLimit = (sender) => {
+                let position = false
+              Object.keys(limit).forEach ((i) => {
+                if (limit[position].id === sender) {
+                   position = i
+                  }
+              })
+             if (position !== false) {
+                return limit[position].limit
+            }
+        }
+        
+                const bayarLimit = (sender, amount) => {
+                let position = false
+            Object.keys(_limit).forEach((i) => {
+                if (_limit[i].id === sender) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                _limit[position].limit -= amount
+                fs.writeFileSync('./database/json/limit.json', JSON.stringify(_limit))
+            }
+        }
+        
+                const limitAdd = (sender) => {
+             let position = false
+            Object.keys(_limit).forEach((i) => {
+                if (_limit[i].id == sender) {
+                    position = i
+                }
+            })
+            if (position !== false) {
+                _limit[position].limit += 1
+                fs.writeFileSync('./database/json/limit.json', JSON.stringify(_limit))
+            }
+        }
+
 
 function kyun(seconds){
   function pad(s){
@@ -73,7 +198,7 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `Olá @${num.split('@')[0]}\nBem Vindo a família Máfia Alemã 🇩🇪🔥*${mdata.subject}*\nTAG OBRIGATÓRIA! 🇩🇪🔥`
+				teks = `Olá @${num.split('@')[0]}\nBem Vindo ao grupo fdp! *${mdata.subject}*`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -83,7 +208,7 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `ADEUS 🇩🇪🔥 @${num.split('@')[0]} -1 Random no grupo ✌️🙄`
+				teks = `ADEUS  @${num.split('@')[0]} -1 Random no grupo ✌️🙄`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			}
@@ -98,6 +223,7 @@ async function starts() {
 	    	blocked.push(i.replace('c.us','s.whatsapp.net'))
 	    }
 	})
+	
 
 	client.on('chat-update', async (mek) => {
 		try {
@@ -123,12 +249,17 @@ async function starts() {
 			mess = {
 				wait: '⌛ Comendo sua mãe, aguarde... ⌛',
 				success: '✔️ Deu certo, ufa kk ✔️',
+				levelon: '❬ ✔ ❭ *leveling* *ativado*',
+				leveloff: ' ❬ X ❭  *leveling* *desativado*',
+				levelnoton: '❬ X ❭ *leveling não ativado*',
+				levelnol: '*error* 0 °-°',
 				error: {
 					stick: '⚠️ Falha, ocorreu um erro ao converter a imagem em figurinha, tente novamente⚠️',
 					Iv: '❌ Link tidak valid ❌'
 				},
 				only: {
 					group: '❌ Este comando só pode ser usado em grupos! ❌',
+					mod: '[❗] ESTE PEDIDO É ESPECÍFICO PARA USUARIO MODERADOR DO BOT!*',
 					ownerG: '⚠️ Este comando só pode ser usado pelo dono do bot! 😂',
 					ownerB: '❌ Este comando só pode ser usado pelo proprietário do bot! ❌',
 					admin: '⚠️ Este comando só pode ser usado pelo o adm! 😝',
@@ -137,7 +268,7 @@ async function starts() {
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = ["5531971794309@s.whatsapp.net"] // replace this with your number
+			const ownerNumber = ["553171794309@s.whatsapp.net","553189480423@s.whatsapp.net"] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -145,6 +276,7 @@ async function starts() {
 			const groupId = isGroup ? groupMetadata.jid : ''
 			const groupMembers = isGroup ? groupMetadata.participants : ''
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
+			const isLevelingOn = isGroup ? _leveling.includes(groupId) : false
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
 			const isWelkom = isGroup ? welkom.includes(from) : false
@@ -163,6 +295,24 @@ async function starts() {
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
+			  //function leveling
+            if (isGroup && isLevelingOn) {
+            const currentLevel = getLevelingLevel(sender)
+            const checkId = getLevelingId(sender)
+            try {
+                if (currentLevel === undefined && checkId === undefined) addLevelingId(sender)
+                const amountXp = Math.floor(Math.random() * 10) + 500
+                const requiredXp = 10000 * (Math.pow(2, currentLevel) - 1)
+                const getLevel = getLevelingLevel(sender)
+                addLevelingXp(sender, amountXp)
+                if (requiredXp <= getLevelingXp(sender)) {
+                    addLevelingLevel(sender, 1)
+                    await reply(`*「 LEVEL UP 」*\n\n➸ *Nome*: ${sender}\n➸ *XP*: ${getLevelingXp(sender)}\n➸ *Level*: ${getLevel} -> ${getLevelingLevel(sender)}\n\nParabéns!!  🎉🎉`)
+                }
+            } catch (err) {
+                console.error(err)
+            }
+        }
 
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -185,14 +335,6 @@ async function starts() {
 					buffer = await getBuffer(me.imgUrl)
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
-				case 'blocklist':
-					teks = 'Este são os números bloqueados :\n'
-					for (let block of blocked) {
-						teks += `~> @${block.split('@')[0]}\n`
-					}
-					teks += `Total : ${blocked.length}`
-					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
-					break
 				case 'ocr':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
@@ -211,8 +353,11 @@ async function starts() {
 						reply('Só uma foto')
 					}
 					break
-				case 'stiker':
 				case 'sticker':
+				case 'figu':
+				case 'figu':
+				case 'fig':
+				case 'f':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -389,6 +534,56 @@ async function starts() {
 						})
 					})
 					break
+				case 'gay':		
+	            	if (args.length < 1) return reply('marque o @ de alguém!')
+					rate = body.slice(1)
+					const ti =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
+					const kl = ti[Math.floor(Math.random() * ti.length)]
+					client.sendMessage(from, 'Como você é gay: *'+rate+'*\n\nSua porcentagem gay : '+ kl+'%', text, { quoted: mek })
+					break
+				case 'gado':
+              client.updatePresence(from, Presence.composing) 
+                random = `${Math.floor(Math.random() * 100)}`
+               hasil = `Nivel de gadisse🐂\n\nVocê é: *${random}%* GADO(A)😛🐂`
+              reply(hasil)
+                break
+                case 'level':
+					if (!isLevelingOn) return reply(mess.levelnoton)
+					if (!isGroup) return reply(mess.only.group)
+					const userLevel = getLevelingLevel(sender)
+					const userXp = getLevelingXp(sender)
+					if (userLevel === undefined && userXp === undefined) return reply(mess.levelnol)
+					sem = sender.replace('@s.whatsapp.net','')
+					resul = `┏━━❉ *LEVEL* ❉━━\n┣⊱ Nome : ${sem}\n┣⊱ Seu XP :  ${userXp}\n┣⊱ Seu Level : ${userLevel}\n┗━━━━━━━━━━━━`
+					client.sendMessage(from, resul, text, { quoted: mek})
+					.catch(async (err) => {
+                    console.error(err)
+                    await reply(`Error!\n${err}`)
+                    })
+                    break
+                case 'leveling':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (args.length < 1) return reply('Boo :𝘃')
+					if (args[0] === 'on') {
+                    if (isLevelingOn) return reply('*O comando de level já estava ativo*')
+                    _leveling.push(groupId)
+                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
+                     reply(mess.levelon)
+					} else if (args[0] === 'off') {
+                    _leveling.splice(groupId, 1)
+                    fs.writeFileSync('./database/group/leveling.json', JSON.stringify(_leveling))
+                     reply(mess.leveloff)
+					} else {
+					reply(' Use ${prefix}leveling on para ativar e  ${prefix}leveling off para desativar')
+					}
+					break
+                case 'lgbt':
+              client.updatePresence(from, Presence.composing) 
+                random = `${Math.floor(Math.random() * 100)}`
+               hasil = `O quanto você é lgbt?🌈\n\nVocê é: *${random}%* lgbt🌈`
+              reply(hasil)
+                break
 				case 'meme':
 					reply(mess.wait)
 					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=MEME BRASIL`, {method: 'get'})
@@ -399,41 +594,13 @@ async function starts() {
 					await limitAdd(sender) 	
 					break
 				case 'porno':
-					memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdU0UmT8RigE3Hbr80gmigjb2AdnPJklcQ3A&usqp=CAU`)
-					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/11/novinha-petuda-fotos-4.jpg`)
-					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWoYHFA_SDgUip6MtvimWRdub_lshAn5Edg&usqp=CAU`)
-					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvLmbqW9LeOCpXiGxgu3By4eQEmJM2Xp26Q&usqp=CAU`)
-					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcnhmpQD1C1Dp7I2_kpi13gAsuoudOPPraog&usqp=CAU`)
-					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/prima-novinha-pelada-6.jpg`)
-					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-5.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'comia facin'})
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'papai'})
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'opa, vou no banheiro tomar meu banho'})
-					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-6.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: '🥴'})
-					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-7.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: '😏'})
-					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-8.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'totosa'})
-					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-10.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'gasosa'})
-					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-16.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'garai ksksks'})
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'ta olhando de mais'})
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'vai bater uma logo fdp kkkkkkk'})
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'gasosa'})
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'k'})
-					break
-				case 'dono':
-					memein = await kagApi.memeindo()
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: '*Criador:* ℳᵃᵗᵉᵘᵟ🇮🇱⃢⃟࿐\n*WPP:* wa.me/+5531971794309\n*Insta:* @xhit.de.israel'})
-					break
-				case 'bot':
-			     	memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://i.imgur.com/dPUVFF6.png`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: ''})
-					break
+					data = fs.readFileSync('./apis/porno.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                 buffer = await getBuffer(randKey.result)
+				client.sendMessage(from, buffer, image, {caption: 'Vai bater uma logo fdpKKKKKKK', quoted: mek})
+                 break
 				case 'belle1':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://1.bp.blogspot.com/-3K_b14RzHTA/XwTW7SQTPRI/AAAAAAAAPtY/UOaKURECbzwXfvASa3g6Pz0D_Ha73Dw4wCLcBGAsYHQ/s1600/boabronha_10.jpg`)
@@ -445,25 +612,44 @@ async function starts() {
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
 					break
 				case 'hentai':
-					memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://i.imgur.com/8U9GwX4.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'ih ala, o cara bate pra 2d 😂'})
+					data = fs.readFileSync('./apis/hentai.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                 buffer = await getBuffer(randKey.result)
+				client.sendMessage(from, buffer, image, {caption: 'Ih ala o cara bate pra 2d 😂🤣', quoted: mek})
+                 break
+				case 'tomp3':
+                	client.updatePresence(from, Presence.composing) 
+					if (!isQuotedVideo) return reply('Marque o video que você quer transformar em mp3')
+					reply(mess.wait)
+					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					media = await client.downloadAndSaveMediaMessage(encmedia)
+					ran = getRandom('.mp4')
+					exec(`ffmpeg -i ${media} ${ran}`, (err) => {
+						fs.unlinkSync(media)
+						if (err) return reply('❌ Falha ao converter vídeo para mp3 ❌')
+						buffer = fs.readFileSync(ran)
+						client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', quoted: mek})
+						fs.unlinkSync(ran)
+					})
 					break
 				case 'bomdia':
-					memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://i.imgur.com/7VL9cFf.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Bom dia, vcs sao fodas ❤️🇮🇱'})
-					break
+					data = fs.readFileSync('./apis/bomdia.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                 buffer = await getBuffer(randKey.result)
+				client.sendMessage(from, buffer, image, {caption: 'Bom dia, amamos vocês ❤🇮🇱', quoted: mek})
+                 break
 				case 'boatarde':
-					memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://i.imgur.com/JaO3yoV.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Boa tarde, amamos vocês! 😎👍'})
-					break
-				case 'boanoite':
-					memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://i.imgur.com/yOFxSUR.jpg`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Boa noite fml ❤️'})
-					break
+					data = fs.readFileSync('./apis/bomdia.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                 buffer = await getBuffer(randKey.result)
+				client.sendMessage(from, buffer, image, {caption: 'Bom tarde, vocês são fodas! ❤🇮🇱', quoted: mek})
+                 break
 				case 'belle':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZu6GwgURUgkuWZXOq-KPLRvA5LOezhvY_VQ&usqp=CAU`)
@@ -478,9 +664,24 @@ async function starts() {
                     client.sendMessage(from, chentai(prefix), text, { quoted: mek })
                     break
 				case 'mia':
-					memein = await kagApi.memeindo()
-					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaKeXU5ryvFTNz6nJm9cioGCoeqlZQSh1Mgw&usqp=CAU`)
-					client.sendMessage(from, buffer, image, {quoted: mek, caption: '👀️'})
+				  	if (!isNsfw) return reply(' *Ative o modo nsfw, para ativar use: .modonsfw on* ')
+					reply(mess.wait)
+					anu = await fetchJson(`https://testesw.herokuapp.com/`, {method: 'get'})
+					ri = JSON.parse(JSON.stringify(anu));
+					ze =  ri[Math.floor(Math.random() * ri.length)];
+					nye = await getBuffer(ze)
+					client.sendMessage(from, nye, image, { caption: 'i love you, mia 🥺❤️', quoted: mek })
+					await limitAdd(sender) 	
+					break
+				case 'pokemon':
+                    client.updatePresence(from, Presence.composing) 
+					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=pokemon`, {method: 'get'})
+					reply(mess.wait)
+					n = JSON.parse(JSON.stringify(data));
+					nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek })
+                    await limitAdd(sender)
 					break
 				case 'lofi':
 					memein = await kagApi.memeindo()
@@ -529,19 +730,27 @@ async function starts() {
 					})
 					await limitAdd(sender) 
 					break 
-				case 'gay':
-					gay = body.slice(13)
-		   anu = await fetchJson(`https://arugaz.herokuapp.com/api/howgay`, {method: 'get'})
-		   hasil = `*Veja os dados do Gay *${gay}\n\n\nPorcentagem Gay : ${anu.persen}%\nAlerta!!! : gay, mas não cego`
-		   reply(hasil)
-		   await limitAdd(sender)
+				case 'bloqueados':
+					teks = 'Esta é a lista de números bloqueados :\n'
+					for (let block of blocked) {
+						teks += `~> @${block.split('@')[0]}\n`
+					}
+					teks += `Total : ${blocked.length}`
+					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
 					break
-				case 'corno':
-					gay = body.slice(13)
-		   anu = await fetchJson(`https://arugaz.herokuapp.com/api/howgay`, {method: 'get'})
-		   hasil = `*Veja os dados do chifrudo \n\n\nPorcentagem : ${anu.persen}%\nAlerta!!! : chifrudo sim, esquecido jamais.`
-		   reply(hasil)
-		   await limitAdd(sender)
+				case 'desbloquear':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isOwner) return reply(mess.only.ownerB)
+				    client.blockUser (`${body.slice(9)}@c.us`, "remove")
+					client.sendMessage(from, `perintah Diterima, membuka blokir ${body.slice(9)}@c.us`, text)
+				    break
+				case 'bloquear':
+				 client.updatePresence(from, Presence.composing) 
+				 client.chatRead (from)
+					if (!isGroup) return reply(mess.only.group)
+					if (!isOwner) return reply(mess.only.ownerB)
+					client.blockUser (`${body.slice(7)}@c.us`, "add")
+					client.sendMessage(from, `perintah Diterima, memblokir ${body.slice(7)}@c.us`, text)
 					break
 				case 'closegp':
 					client.updatePresence(from, Presence.composing) 
@@ -557,7 +766,6 @@ async function starts() {
 					reply(close)
 					break
 				case 'opengp':
-                case 'bukagc':
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -568,18 +776,6 @@ async function starts() {
 					}
 					client.groupSettingChange (from, GroupSettingChange.messageSend, false);
 					reply(open)
-					break
-				case 'brainly':
-                    brien = body.slice(9)
-					brainly(`${brien}`).then(res => {
-					teks = '♡───────────♡\n'
-					for (let Y of res.data) {
-						teks += `\n*「 BRAINLY 」*\n\n*➸ Questão:* ${Y.pertanyaan}\n\n*➸ Resposta:* ${Y.jawaban[0].text}\n♡───────────♡\n`
-					}
-					client.sendMessage(from, teks, text, {quoted: mek, detectLinks: false})
-                        console.log(res)
-                    })
-					await limitAdd(sender)
 					break
 				case 'play':
                 reply(mess.wait)
@@ -598,7 +794,7 @@ async function starts() {
 				    if (!isGroup) return reply(mess.only.group)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
 					linkgc = await client.groupInviteCode (from)
-					yeh = `https://chat.whatsapp.com/${linkgc}\n\nLink Group *${groupName}*`
+					yeh = `https://chat.whatsapp.com/${linkgc}\n\nLink do Grupo: *${groupName}*`
 					client.sendMessage(from, yeh, text, {quoted: mek, detectLinks: false})
 					break
 				case 'nsfwloli':
@@ -612,16 +808,6 @@ async function starts() {
                    case 'gpessoa':
                     client.sendMessage(from, gpessoa(prefix), text, { quoted: mek })
                     break
-				case 'xvideos':
-              	    if (args.length < 1) return reply('Cadê o texto, mano?')
-                    anu = await fetchJson(`https://api.arugaz.my.id/api/media/xvideo/search?query=${body.slice(9)}`, {method: 'get'})
-                    teks = `===============\n`
-                    for (let b of anu.result) {
-                    teks += `• Título: ${b.title}\n• Info: ${b.info}\n• Link: ${b.link}\n===============\n`
-                    }
-                    reply(teks.trim())
-			     	await limitAdd(sender) 
-			     	break 
 				case 'reislin':
 					memein = await kagApi.memeindo()
 					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKlc2hMIJ4PjW5tIXltrKe6xeBoKPLKTZMnQ&usqp=CAU`)
@@ -651,6 +837,14 @@ async function starts() {
                     client.sendMessage(from, buffer, image, {quoted: mek})
                     await limitAdd(sender)
                     break
+                 case 'boanoite':
+					data = fs.readFileSync('./apis/bomdia.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                 buffer = await getBuffer(randKey.result)
+				client.sendMessage(from, buffer, image, {caption: 'Boa noite fml ❤🇮🇱', quoted: mek})
+                 break
 				case 'nsfwloli':
 					if (!isNsfw) return reply('❌ *FALSE* ❌')
 					loli.getNSFWLoli(async (err, res) => {
@@ -685,38 +879,9 @@ async function starts() {
 					}
 					reply(teks.trim())
 					break
-				case 'tiktok':
-					if (args.length < 1) return reply('Onde está o url, hum?')
-					if (!isUrl(args[0]) && !args[0].includes('tiktok.com')) return reply(mess.error.Iv)
-					reply(mess.wait)
-					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/tiktok?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					buffer = await getBuffer(anu.result)
-					client.sendMessage(from, buffer, video, {quoted: mek})
-					break
-				case 'tiktokstalk':
-					try {
-						if (args.length < 1) return client.sendMessage(from, 'Onde está o nome de usuário, hum?', text, {quoted: mek})
-						let { user, stats } = await tiktod.getUserProfileInfo(args[0])
-						reply(mess.wait)
-						teks = `*ID* : ${user.id}\n*Username* : ${user.uniqueId}\n*Nickname* : ${user.nickname}\n*Followers* : ${stats.followerCount}\n*Followings* : ${stats.followingCount}\n*Posts* : ${stats.videoCount}\n*Luv* : ${stats.heart}\n`
-						buffer = await getBuffer(user.avatarLarger)
-						client.sendMessage(from, buffer, image, {quoted: mek, caption: teks})
-					} catch (e) {
-						console.log(`Error :`, color(e,'red'))
-						reply('Possível nome de usuário inválido')
-					}
-					break
-				case 'nulis':
-				case 'tulis':
-					if (args.length < 1) return reply('O que você quer escrever??')
-					teks = body.slice(7)
-					reply(mess.wait)
-					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/nulis?text=${teks}&apiKey=${apiKey}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					buff = await getBuffer(anu.result)
-					client.sendMessage(from, buff, image, {quoted: mek, caption: mess.success})
-					break
+				case 'gcpf':
+                    client.sendMessage(from, gcpf(prefix), text, { quoted: mek })
+                    break
 				case 'url2img':
 					tipelist = ['desktop','tablet','mobile']
 					if (args.length < 1) return reply('Que tipo é??')
@@ -729,9 +894,9 @@ async function starts() {
 					buff = await getBuffer(anu.result)
 					client.sendMessage(from, buff, image, {quoted: mek})
 					break
-				case 'tstiker':
-				case 'tsticker':
-					if (args.length < 1) return reply('Cadê o texto, hum?')
+				case 'attp':
+				case 'attps':
+					if (args.length < 1) return reply('Onde está o texto, hum?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
 					teks = body.slice(9).trim()
@@ -766,7 +931,46 @@ async function starts() {
 					}
 					reply(teks)
 					break
-                 case 'marcar3':
+				case 'neko':
+					gatauda = body.slice(6)
+					reply(mess.wait)
+					anu = await fetchJson(`https://tobz-api.herokuapp.com/api/nekonime?apikey=BotWeA`, {method: 'get'})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, image, {quoted: mek})
+                    await limitAdd(sender)
+					break
+				case 'wallpaper':
+				    try {
+			    	if (!isOwner) return reply(mess.only.ownerB)
+						if (!isNsfw) return reply('❌ *FALSO* ❌')
+						res = await fetchJson(`https://wallpaperaccess.com/full/395986.jpg','https://wallpaperaccess.com/full/21628.jpg','https://wallpaperaccess.com/full/21622.jpg','https://wallpaperaccess.com/full/21612.jpg','https://wallpaperaccess.com/full/21611.png','https://wallpaperaccess.com/full/21597.jpg','https://cdn.nekos.life/wallpaper/QwGLg4oFkfY.png','https://wallpaperaccess.com/full/21591.jpg','https://cdn.nekos.life/wallpaper/bUzSjcYxZxQ.jpg','https://cdn.nekos.life/wallpaper/j49zxzaUcjQ.jpg','https://cdn.nekos.life/wallpaper/YLTH5KuvGX8.png','https://cdn.nekos.life/wallpaper/Xi6Edg133m8.jpg','https://cdn.nekos.life/wallpaper/qvahUaFIgUY.png','https://cdn.nekos.life/wallpaper/leC8q3u8BSk.jpg','https://cdn.nekos.life/wallpaper/tSUw8s04Zy0.jpg','https://cdn.nekos.life/wallpaper/sqsj3sS6EJE.png','https://cdn.nekos.life/wallpaper/HmjdX_s4PU4.png','https://cdn.nekos.life/wallpaper/Oe2lKgLqEXY.jpg','https://cdn.nekos.life/wallpaper/GTwbUYI-xTc.jpg','https://cdn.nekos.life/wallpaper/nn_nA8wTeP0.png','https://cdn.nekos.life/wallpaper/Q63o6v-UUa8.png','https://cdn.nekos.life/wallpaper/ZXLFm05K16Q.jpg','https://cdn.nekos.life/wallpaper/cwl_1tuUPuQ.png','https://cdn.nekos.life/wallpaper/wWhtfdbfAgM.jpg','https://cdn.nekos.life/wallpaper/3pj0Xy84cPg.jpg','https://cdn.nekos.life/wallpaper/sBoo8_j3fkI.jpg','https://cdn.nekos.life/wallpaper/gCUl_TVizsY.png','https://cdn.nekos.life/wallpaper/LmTi1k9REW8.jpg','https://cdn.nekos.life/wallpaper/sbq_4WW2PUM.jpg','https://cdn.nekos.life/wallpaper/QOSUXEbzDQA.png','https://cdn.nekos.life/wallpaper/khaqGIHsiqk.jpg','https://cdn.nekos.life/wallpaper/iFtEXugqQgA.png','https://cdn.nekos.life/wallpaper/deFKIDdRe1I.jpg','https://cdn.nekos.life/wallpaper/OHZVtvDm0gk.jpg','https://cdn.nekos.life/wallpaper/YZYa00Hp2mk.jpg','https://cdn.nekos.life/wallpaper/R8nPIKQKo9g.png','https://cdn.nekos.life/wallpaper/_brn3qpRBEE.jpg','https://cdn.nekos.life/wallpaper/ADTEQdaHhFI.png','https://cdn.nekos.life/wallpaper/MGvWl6om-Fw.jpg','https://cdn.nekos.life/wallpaper/YGmpjZW3AoQ.jpg','https://cdn.nekos.life/wallpaper/hNCgoY-mQPI.jpg','https://cdn.nekos.life/wallpaper/3db40hylKs8.png','https://cdn.nekos.life/wallpaper/iQ2FSo5nCF8.jpg','https://cdn.nekos.life/wallpaper/meaSEfeq9QM.png','https://cdn.nekos.life/wallpaper/CmEmn79xnZU.jpg','https://cdn.nekos.life/wallpaper/MAL18nB-yBI.jpg','https://cdn.nekos.life/wallpaper/FUuBi2xODuI.jpg','https://cdn.nekos.life/wallpaper/ez-vNNuk6Ck.jpg','https://cdn.nekos.life/wallpaper/K4-z0Bc0Vpc.jpg','https://cdn.nekos.life/wallpaper/Y4JMbswrNg8.jpg','https://cdn.nekos.life/wallpaper/ffbPXIxt4-0.png','https://cdn.nekos.life/wallpaper/x63h_W8KFL8.jpg','https://cdn.nekos.life/wallpaper/lktzjDRhWyg.jpg','https://cdn.nekos.life/wallpaper/j7oQtvRZBOI.jpg','https://cdn.nekos.life/wallpaper/MQQEAD7TUpQ.png','https://cdn.nekos.life/wallpaper/lEG1-Eeva6Y.png','https://cdn.nekos.life/wallpaper/Loh5wf0O5Aw.png','https://cdn.nekos.life/wallpaper/yO6ioREenLA.png','https://cdn.nekos.life/wallpaper/4vKWTVgMNDc.jpg','https://cdn.nekos.life/wallpaper/Yk22OErU8eg.png','https://cdn.nekos.life/wallpaper/Y5uf1hsnufE.png','https://cdn.nekos.life/wallpaper/xAmBpMUd2Zw.jpg','https://cdn.nekos.life/wallpaper/f_RWFoWciRE.jpg','https://cdn.nekos.life/wallpaper/Y9qjP2Y__PA.jpg','https://cdn.nekos.life/wallpaper/eqEzgohpPwc.jpg','https://cdn.nekos.life/wallpaper/s1MBos_ZGWo.jpg','https://cdn.nekos.life/wallpaper/PtW0or_Pa9c.png','https://cdn.nekos.life/wallpaper/32EAswpy3M8.png','https://cdn.nekos.life/wallpaper/Z6eJZf5xhcE.png','https://cdn.nekos.life/wallpaper/xdiSF731IFY.jpg','https://cdn.nekos.life/wallpaper/Y9r9trNYadY.png','https://cdn.nekos.life/wallpaper/8bH8CXn-sOg.jpg','https://cdn.nekos.life/wallpaper/a02DmIFzRBE.png','https://cdn.nekos.life/wallpaper/MnrbXcPa7Oo.png','https://cdn.nekos.life/wallpaper/s1Tc9xnugDk.jpg','https://cdn.nekos.life/wallpaper/zRqEx2gnfmg.jpg','https://cdn.nekos.life/wallpaper/PtW0or_Pa9c.png','https://cdn.nekos.life/wallpaper/0ECCRW9soHM.jpg','https://cdn.nekos.life/wallpaper/kAw8QHl_wbM.jpg','https://cdn.nekos.life/wallpaper/ZXcaFmpOlLk.jpg','https://cdn.nekos.life/wallpaper/WVEdi9Ng8UE.png','https://cdn.nekos.life/wallpaper/IRu29rNgcYU.png','https://cdn.nekos.life/wallpaper/LgIJ_1AL3rM.jpg','https://cdn.nekos.life/wallpaper/DVD5_fLJEZA.jpg','https://cdn.nekos.life/wallpaper/siqOQ7k8qqk.jpg','https://cdn.nekos.life/wallpaper/CXNX_15eGEQ.png','https://cdn.nekos.life/wallpaper/s62tGjOTHnk.jpg','https://cdn.nekos.life/wallpaper/tmQ5ce6EfJE.png','https://cdn.nekos.life/wallpaper/Zju7qlBMcQ4.jpg','https://cdn.nekos.life/wallpaper/CPOc_bMAh2Q.png','https://cdn.nekos.life/wallpaper/Ew57S1KtqsY.jpg','https://cdn.nekos.life/wallpaper/hVpFbYJmZZc.jpg','https://cdn.nekos.life/wallpaper/sb9_J28pftY.jpg','https://cdn.nekos.life/wallpaper/JDoIi_IOB04.jpg','https://cdn.nekos.life/wallpaper/rG76AaUZXzk.jpg','https://cdn.nekos.life/wallpaper/9ru2luBo360.png','https://cdn.nekos.life/wallpaper/ghCgiWFxGwY.png','https://cdn.nekos.life/wallpaper/OSR-i-Rh7ZY.png','https://cdn.nekos.life/wallpaper/65VgtPyweCc.jpg','https://cdn.nekos.life/wallpaper/3vn-0FkNSbM.jpg','https://cdn.nekos.life/wallpaper/u02Y0-AJPL0.jpg','https://cdn.nekos.life/wallpaper/_-Z-0fGflRc.jpg','https://cdn.nekos.life/wallpaper/3VjNKqEPp58.jpg','https://cdn.nekos.life/wallpaper/NoG4lKnk6Sc.jpg','https://cdn.nekos.life/wallpaper/xiTxgRMA_IA.jpg','https://cdn.nekos.life/wallpaper/yq1ZswdOGpg.png','https://cdn.nekos.life/wallpaper/4SUxw4M3UMA.png','https://cdn.nekos.life/wallpaper/cUPnQOHNLg0.jpg','https://cdn.nekos.life/wallpaper/zczjuLWRisA.jpg','https://cdn.nekos.life/wallpaper/TcxvU_diaC0.png','https://cdn.nekos.life/wallpaper/7qqWhEF_uoY.jpg','https://cdn.nekos.life/wallpaper/J4t_7DvoUZw.jpg','https://cdn.nekos.life/wallpaper/xQ1Pg5D6J4U.jpg','https://cdn.nekos.life/wallpaper/aIMK5Ir4xho.jpg','https://cdn.nekos.life/wallpaper/6gneEXrNAWU.jpg','https://cdn.nekos.life/wallpaper/PSvNdoISWF8.jpg','https://cdn.nekos.life/wallpaper/SjgF2-iOmV8.jpg','https://cdn.nekos.life/wallpaper/vU54ikOVY98.jpg','https://cdn.nekos.life/wallpaper/QjnfRwkRU-Q.jpg','https://cdn.nekos.life/wallpaper/uSKqzz6ZdXc.png','https://cdn.nekos.life/wallpaper/AMrcxZOnVBE.jpg','https://cdn.nekos.life/wallpaper/N1l8SCMxamE.jpg','https://cdn.nekos.life/wallpaper/n2cBaTo-J50.png','https://cdn.nekos.life/wallpaper/ZXcaFmpOlLk.jpg','https://cdn.nekos.life/wallpaper/7bwxy3elI7o.png','https://cdn.nekos.life/wallpaper/7VW4HwF6LcM.jpg','https://cdn.nekos.life/wallpaper/YtrPAWul1Ug.png','https://cdn.nekos.life/wallpaper/1p4_Mmq95Ro.jpg','https://cdn.nekos.life/wallpaper/EY5qz5iebJw.png','https://cdn.nekos.life/wallpaper/aVDS6iEAIfw.jpg','https://cdn.nekos.life/wallpaper/veg_xpHQfjE.jpg','https://cdn.nekos.life/wallpaper/meaSEfeq9QM.png','https://cdn.nekos.life/wallpaper/Xa_GtsKsy-s.png','https://cdn.nekos.life/wallpaper/6Bx8R6D75eM.png','https://cdn.nekos.life/wallpaper/zXOGXH_b8VY.png','https://cdn.nekos.life/wallpaper/VQcviMxoQ00.png','https://cdn.nekos.life/wallpaper/CJnRl-PKWe8.png','https://cdn.nekos.life/wallpaper/zEWYfFL_Ero.png','https://cdn.nekos.life/wallpaper/_C9Uc5MPaz4.png','https://cdn.nekos.life/wallpaper/zskxNqNXyG0.jpg','https://cdn.nekos.life/wallpaper/g7w14PjzzcQ.jpg','https://cdn.nekos.life/wallpaper/KavYXR_GRB4.jpg','https://cdn.nekos.life/wallpaper/Z_r9WItzJBc.jpg','https://cdn.nekos.life/wallpaper/Qps-0JD6834.jpg','https://cdn.nekos.life/wallpaper/Ri3CiJIJ6M8.png','https://cdn.nekos.life/wallpaper/ArGYIpJwehY.jpg','https://cdn.nekos.life/wallpaper/uqYKeYM5h8w.jpg','https://cdn.nekos.life/wallpaper/h9cahfuKsRg.jpg','https://cdn.nekos.life/wallpaper/iNPWKO8d2a4.jpg','https://cdn.nekos.life/wallpaper/j2KoFVhsNig.jpg','https://cdn.nekos.life/wallpaper/z5Nc-aS6QJ4.jpg','https://cdn.nekos.life/wallpaper/VUFoK8l1qs0.png','https://cdn.nekos.life/wallpaper/rQ8eYh5mXN8.png','https://cdn.nekos.life/wallpaper/D3NxNISDavQ.png','https://cdn.nekos.life/wallpaper/Z_CiozIenrU.jpg','https://cdn.nekos.life/wallpaper/np8rpfZflWE.jpg','https://cdn.nekos.life/wallpaper/ED-fgS09gik.jpg','https://cdn.nekos.life/wallpaper/AB0Cwfs1X2w.jpg','https://cdn.nekos.life/wallpaper/DZBcYfHouiI.jpg','https://cdn.nekos.life/wallpaper/lC7pB-GRAcQ.png','https://cdn.nekos.life/wallpaper/zrI-sBSt2zE.png','https://cdn.nekos.life/wallpaper/_RJhylwaCLk.jpg','https://cdn.nekos.life/wallpaper/6km5m_GGIuw.png','https://cdn.nekos.life/wallpaper/3db40hylKs8.png','https://cdn.nekos.life/wallpaper/oggceF06ONQ.jpg','https://cdn.nekos.life/wallpaper/ELdH2W5pQGo.jpg','https://cdn.nekos.life/wallpaper/Zun_n5pTMRE.png','https://cdn.nekos.life/wallpaper/VqhFKG5U15c.png','https://cdn.nekos.life/wallpaper/NsMoiW8JZ60.jpg','https://cdn.nekos.life/wallpaper/XE4iXbw__Us.png','https://cdn.nekos.life/wallpaper/a9yXhS2zbhU.jpg','https://cdn.nekos.life/wallpaper/jjnd31_3Ic8.jpg','https://cdn.nekos.life/wallpaper/Nxanxa-xO3s.png','https://cdn.nekos.life/wallpaper/dBHlPcbuDc4.jpg','https://cdn.nekos.life/wallpaper/6wUZIavGVQU.jpg','https://cdn.nekos.life/wallpaper/_-Z-0fGflRc.jpg','https://cdn.nekos.life/wallpaper/H9OUpIrF4gU.jpg','https://cdn.nekos.life/wallpaper/xlRdH3fBMz4.jpg','https://cdn.nekos.life/wallpaper/7IzUIeaae9o.jpg','https://cdn.nekos.life/wallpaper/FZCVL6PyWq0.jpg','https://cdn.nekos.life/wallpaper/5dG-HH6d0yw.png','https://cdn.nekos.life/wallpaper/ddxyA37HiwE.png','https://cdn.nekos.life/wallpaper/I0oj_jdCD4k.jpg','https://cdn.nekos.life/wallpaper/ABchTV97_Ts.png','https://cdn.nekos.life/wallpaper/58C37kkq39Y.png','https://cdn.nekos.life/wallpaper/HMS5mK7WSGA.jpg','https://cdn.nekos.life/wallpaper/1O3Yul9ojS8.jpg','https://cdn.nekos.life/wallpaper/hdZI1XsYWYY.jpg','https://cdn.nekos.life/wallpaper/h8pAJJnBXZo.png','https://cdn.nekos.life/wallpaper/apO9K9JIUp8.jpg','https://cdn.nekos.life/wallpaper/p8f8IY_2mwg.jpg','https://cdn.nekos.life/wallpaper/HY1WIB2r_cE.jpg','https://cdn.nekos.life/wallpaper/u02Y0-AJPL0.jpg','https://cdn.nekos.life/wallpaper/jzN74LcnwE8.png','https://cdn.nekos.life/wallpaper/IeAXo5nJhjw.jpg','https://cdn.nekos.life/wallpaper/7lgPyU5fuLY.jpg','https://cdn.nekos.life/wallpaper/f8SkRWzXVxk.png','https://cdn.nekos.life/wallpaper/ZmDTpGGeMR8.jpg','https://cdn.nekos.life/wallpaper/AMrcxZOnVBE.jpg','https://cdn.nekos.life/wallpaper/ZhP-f8Icmjs.jpg','https://cdn.nekos.life/wallpaper/7FyUHX3fE2o.jpg','https://cdn.nekos.life/wallpaper/CZoSLK-5ng8.png','https://cdn.nekos.life/wallpaper/pSNDyxP8l3c.png','https://cdn.nekos.life/wallpaper/AhYGHF6Fpck.jpg','https://cdn.nekos.life/wallpaper/ic6xRRptRes.jpg','https://cdn.nekos.life/wallpaper/89MQq6KaggI.png','https://cdn.nekos.life/wallpaper/y1DlFeHHTEE.png']`, {method: 'get'})
+						bufferttt = await getBuffer(res.result)
+						client.sendMessage(from, bufferttt, image, {quoted: mek, caption: 'ksksks'})
+					} catch (e) {
+						console.log(`Error :`, color(e,'red'))
+						reply('❌ *ERRO* ❌')
+					}
+					break
+				case 'ytmp4':
+					if (args.length < 1) return reply('Cadê o url, hum?')
+					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
+					anu = await fetchJson(`https://st4rz.herokuapp.com/api/ytv2?url=${args[0]}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					teks = `*Title* : ${anu.title}`
+					thumb = await getBuffer(anu.thumb)
+					client.sendMessage(from, thumb, image, {quoted: mek, caption: teks})
+					buffer = await getBuffer(anu.result)
+					client.sendMessage(from, buffer, video, {mimetype: 'video/mp4', filename: `${anu.title}.mp4`, quoted: mek})
+					break
+				case 'alerta':
+					data = fs.readFileSync('./apis/alerta.js');
+                 jsonData = JSON.parse(data);
+                 randIndex = Math.floor(Math.random() * jsonData.length);
+                 randKey = jsonData[randIndex];
+                 buffer = await getBuffer(randKey.result)
+				client.sendMessage(from, buffer, image, {caption: 'Alerta!', quoted: mek})
+                 break
+                 case 'marcar1':
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
 					teks += '\n\n'
@@ -777,13 +981,31 @@ async function starts() {
 					client.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
 					break
 				case 'limpar':
-					if (!isOwner) return reply('Comando so funfa, se você for o dono do bot 😡')
+					if (!isOwner) return reply('Quem é Você?, Voce não é meu dono 😂')
 					anu = await client.chats.all()
 					client.setMaxListeners(25)
 					for (let _ of anu) {
 						client.deleteChat(_.jid)
 					}
 					reply('Excluido todos os chats com sucesso :)')
+					break
+				case 'modonsfw':
+					if (!isGroup) return reply(mess.only.group)
+					if (!isOwner) return reply('Comando em teste, por enquanto somente os donos podem usar, em breve estara disponível para vcs amores')
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (args.length < 1) return reply('Hmmmm')
+					if ((args[0]) === 'on') {
+						if (isNsfw) return reply('O modo nsfw já está ativo')
+						nsfw.push(from)
+						fs.writeFileSync('./database/json/nsfw.json', JSON.stringify(nsfw))
+						reply(`\`\`\`✓Ativado com sucesso o modo nsfw no grupo\`\`\` *${groupMetadata.subject}*`)
+					} else if ((args[0]) === 'off') {
+						nsfw.splice(from, 1)
+						fs.writeFileSync('./database/json/nsfw.json', JSON.stringify(nsfw))
+						reply(`\`\`\`✓Modo nsfw desativado com sucesso no grupo\`\`\` *${groupMetadata.subject}*`)
+					} else {
+						reply('On para ativar, Off para desligar')
+					}
 					break
 				case 'destrava':
                     client.sendMessage(from, destrava(prefix), text, { quoted: mek })
@@ -812,7 +1034,7 @@ async function starts() {
                     if (!isBotGroupAdmins) return reply(mess.only.Badmin)
                     media = await client.downloadAndSaveMediaMessage(mek)
                     await client.updateProfilePicture (from, media)
-                    reply('Alterou com sucesso o ícone do Grupo')
+                    reply('Alterou com sucesso a foto do Grupo')
                     break
 				case 'setdesc':
 			    	 if (!isGroup) return reply(mess.only.group)
@@ -821,7 +1043,49 @@ async function starts() {
 				     client.groupUpdateDescription(from, `${body.slice(9)}`)
 				     client.sendMessage(from, 'Descrição alterada com sucesso', text, {quoted: mek})
 				     break
-				case 'grupoinfo':
+				case 'sasuke':
+
+					reply(mess.wait)
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=sasuke`, {method: 'get'})
+					sasu = JSON.parse(JSON.stringify(anu));
+					ke =  sasu[Math.floor(Math.random() * sasu.length)];
+					nye = await getBuffer(ke)
+					client.sendMessage(from, nye, image, { caption: 'sasuke!!', quoted: mek })
+					await limitAdd(sender) 
+					break
+				case 'hinata':
+
+					reply(mess.wait)
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=Hinata`, {method: 'get'})
+					hina = JSON.parse(JSON.stringify(anu));
+					ta =  hina[Math.floor(Math.random() * hina.length)];
+					nye = await getBuffer(ta)
+					client.sendMessage(from, nye, image, { caption: 'hinata!!', quoted: mek })
+					await limitAdd(sender)
+					break
+				case 'rize':
+					reply(mess.wait)
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=anime+rize`, {method: 'get'})
+					ri = JSON.parse(JSON.stringify(anu));
+					ze =  ri[Math.floor(Math.random() * ri.length)];
+					nye = await getBuffer(ze)
+					client.sendMessage(from, nye, image, { caption: 'rize chan!!', quoted: mek })
+					await limitAdd(sender) 	
+					break 
+				case 'sakura':
+					reply(mess.wait)
+					anu = await fetchJson(`https://api.fdci.se/rep.php?gambar=sakura`, {method: 'get'})
+					sak = JSON.parse(JSON.stringify(anu));
+					kura =  sak[Math.floor(Math.random() * sak.length)];
+					nye = await getBuffer(kura)
+					client.sendMessage(from, nye, image, { caption: 'sakura!!', quoted: mek })
+					await limitAdd(sender) 
+					break 
+				case 'dono':
+                    client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
+                    client.sendMessage(from, '🇮🇱🐊wa.me/5531989480423 | • 𝘱𝘢𝘣𝘭𝘪𝘯 🇮🇱\n🇮🇱🐊wa.me/5531971794309 | ℳᵃᵗᵉᵘᵟ🇮🇱⃢⃟࿐\n\nMeus dois donos são esses dois lindos aee chama no pv desses gostosos ai 🥵😨',MessageType.text, { quoted: mek} )
+                    break
+		 case 'grupoinfo':
                     client.updatePresence(from, Presence.composing)
                     if (!isGroup) return reply(mess.only.group)
                     ppUrl = await client.getProfilePicture(from) // leave empty to get your own
@@ -878,34 +1142,6 @@ async function starts() {
 						reply('Falha ao adicionar a pessoa, talvez seja porque é privado')
 					}
 					break
-				case 'kick':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag target yang ingin di tendang!')
-					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-					if (mentioned.length > 1) {
-						teks = 'Pedidos recebidos, emitidos :\n'
-						for (let _ of mentioned) {
-							teks += `@${_.split('@')[0]}\n`
-						}
-						mentions(teks, mentioned, true)
-						client.groupRemove(from, mentioned)
-					} else {
-						mentions(`KKKKKKKKKK acabou de levar ban, bobao : @${mentioned[0].split('@')[0]}`, mentioned, true)
-						client.groupRemove(from, mentioned)
-					}
-					break
-				case 'listadmins':
-					if (!isGroup) return reply(mess.only.group)
-					teks = `Lista de admins do grupo *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
-					no = 0
-					for (let admon of groupAdmins) {
-						no += 1
-						teks += `[${no.toString()}] @${admon.split('@')[0]}\n`
-					}
-					mentions(teks, groupAdmins, true)
-					break
                                 case 'leave':
                                         if (!isGroup) return reply(mess.only.group)
                                         if (isGroupAdmins || isOwner) {
@@ -915,7 +1151,7 @@ async function starts() {
                                         }
                                         break
 				case 'toimg':
-					if (!isQuotedSticker) return reply('❌ responder sticker hum ❌')
+					if (!isQuotedSticker) return reply('❌ responder com sticker animal ❌')
 					reply(mess.wait)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
 					media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -961,27 +1197,11 @@ async function starts() {
 						reply('1 para ativar, 0 para desativar, lerdão você em 🤦')
 					}
 					break
-				case 'welcome':
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (args.length < 1) return reply('Hmmmm')
-					if (Number(args[0]) === 1) {
-						if (isWelkom) return reply('Já ativo um')
-						welkom.push(from)
-						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-						reply('Ativou com sucesso o recurso de boas-vindas neste grupo ✔️')
-					} else if (Number(args[0]) === 0) {
-						welkom.splice(from, 1)
-						fs.writeFileSync('./src/welkom.json', JSON.stringify(welkom))
-						reply('Desativou com sucesso o recurso de boas-vindas neste grupo ✔️')
-					} else {
-						reply('1 para ativar, 0 para desativar')
-					}
-                                      break
 				case 'clonar':
 					if (!isGroup) return reply(mess.only.group)
+					if (!isOwner) return reply(mess.only.ownerB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (args.length < 1) return reply('A tag alvo que você deseja clonar')
+					if (args.length < 1) return reply('Marque a pessoa que você quer clonar\n\n*EXEMPLO:* clone @')
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag cvk')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid[0]
 					let { jid, id, notify } = groupMembers.find(x => x.jid === mentioned)
@@ -989,9 +1209,9 @@ async function starts() {
 						pp = await client.getProfilePicture(id)
 						buffer = await getBuffer(pp)
 						client.updateProfilePicture(botNumber, buffer)
-						mentions(`Foto profile Berhasil di perbarui menggunakan foto profile @${id.split('@')[0]}`, [jid], true)
+						mentions(`Foto do perfil atualizada com sucesso, usando a foto do perfil @${id.split('@')[0]}`, [jid], true)
 					} catch (e) {
-						reply('falhou')
+						reply('Putz, deu erro, a pessoa deve estar sem foto! ')
 					}
 					break
 				case 'wait':
@@ -1015,7 +1235,7 @@ async function starts() {
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						console.log(color('[ERROR]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
+						console.log(color('[ERROR]','red'), 'Comando não esta registrado no script ', color(sender.split('@')[0]))
 					}
                            }
 		} catch (e) {

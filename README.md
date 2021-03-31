@@ -1,6 +1,5 @@
-## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> FEITO E TRADUZIDO POR: MATEUSSS NE PAE
+## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> FEITO E TRADUZIDO POR: ℳᵃᵗᵉᵘᵟ🇮🇱⃢⃟࿐
 <p align="center">
-<img src="https://media-giphy-com.cdn.ampproject.org/ii/w820/s/media.giphy.com/media/1g3A0gpaidxWcL9Mfo/giphy.gif" width="230" height="230"/>
 </p>
 <br>
 
@@ -8,23 +7,6 @@
  
 </details>
 
-### ATENÇÃO
-DESEJA RE-CARREGAR O SCRIPT? NÃO ALTERE A INFORMAÇÃO !!!
-
-## NOTA:>
-NÃO VENDE / COMPRE O SCRIPT, ESTE SCRIPT É 100% GRATUITO PARA OS USUÁRIOS DO TERMUX
-</div>
-
-### FERRAMENTAS E MATERIAIS <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Mario_Hello_Big.gif" width="29px">
-Prepare as ferramentas e materiais.
-`` `bash
-> 2 telefones celulares (1 para executar SC, 1 para ler o código QR sis)
-> rede de internet rápida, cota +
-> armazenamento adequado
-> aplicativo whatsapp
-> aplicativo termux
-> café + cigarros KKKK;-;
-```
 INSTALAÇÃO:
 
 > Se você não tiver o APK Termux, baixe-o na Playstore
@@ -78,7 +60,4 @@ INSTALAÇÃO:
 |       ✅       | MAIS recursos em breve 🍂        |
 
 ISRAEL DOMINA PORRA🐦❤️
-
-<img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Mario_Gameplay.gif" alt="Mario Game" width="600" />
-
 
